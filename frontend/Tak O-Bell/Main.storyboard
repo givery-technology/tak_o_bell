@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEc-pI-SbE">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Unwanted Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhx-Th-2eJ">
-                                        <rect key="frame" x="15" y="17" width="570" height="21"/>
+                                        <rect key="frame" x="15" y="29" width="570" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="42" id="Lo1-dH-9a0"/>
                                         </constraints>
@@ -33,29 +33,49 @@
                                             </mask>
                                         </variation>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsw-ly-qMr">
+                                        <rect key="frame" x="535" y="25" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="JMM-a0-Vd5"/>
+                                            <constraint firstAttribute="width" constant="60" id="N8o-Jb-e7i"/>
+                                            <constraint firstAttribute="height" constant="30" id="dhJ-xL-Gn1"/>
+                                        </constraints>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="JMM-a0-Vd5"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="didTapNext:" destination="zBx-0U-s74" eventType="touchUpInside" id="vg3-i4-9UN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.26066029239999999" green="0.66666666669999997" blue="0.4154236073" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Jhx-Th-2eJ" secondAttribute="bottom" constant="10" id="8NH-xX-ZBm"/>
+                                    <constraint firstAttribute="bottom" secondItem="wsw-ly-qMr" secondAttribute="bottom" constant="10" id="A0f-8b-ZaM"/>
                                     <constraint firstAttribute="centerY" secondItem="Jhx-Th-2eJ" secondAttribute="centerY" id="DMJ-jk-uVB"/>
+                                    <constraint firstAttribute="trailing" secondItem="wsw-ly-qMr" secondAttribute="trailing" constant="5" id="Ec3-7t-kpG"/>
                                     <constraint firstAttribute="centerX" secondItem="Jhx-Th-2eJ" secondAttribute="centerX" id="Iki-jL-17Y"/>
+                                    <constraint firstItem="wsw-ly-qMr" firstAttribute="centerY" secondItem="Jhx-Th-2eJ" secondAttribute="centerY" id="KQx-Iq-7QW"/>
                                     <constraint firstItem="Jhx-Th-2eJ" firstAttribute="leading" secondItem="IEc-pI-SbE" secondAttribute="leading" constant="15" id="Obl-H5-5Jn"/>
                                     <constraint firstAttribute="trailing" secondItem="Jhx-Th-2eJ" secondAttribute="trailing" constant="15" id="iyh-Mv-Ic1"/>
-                                    <constraint firstAttribute="height" constant="55" id="np4-dy-vkb"/>
+                                    <constraint firstAttribute="height" constant="60" id="np4-dy-vkb"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="DMJ-jk-uVB"/>
                                         <exclude reference="Iki-jL-17Y"/>
+                                        <exclude reference="A0f-8b-ZaM"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQn-Qs-aKJ">
-                                <rect key="frame" x="0.0" y="55" width="600" height="350"/>
-                                <connections>
-                                    <segue destination="izd-ME-Vdo" kind="embed" identifier="embedIngredientList" id="m6l-NZ-QTc"/>
-                                </connections>
-                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMX-1V-CBl">
-                                <rect key="frame" x="0.0" y="405" width="600" height="55"/>
+                                <rect key="frame" x="0.0" y="395" width="600" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unwanted Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-cx-Lut">
                                         <rect key="frame" x="15" y="17" width="570" height="21"/>
@@ -88,39 +108,54 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-Lt-0km">
-                                <rect key="frame" x="0.0" y="460" width="600" height="140"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sr7-lY-onZ">
+                                <rect key="frame" x="10" y="455" width="580" height="140"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-Lt-0km">
+                                        <rect key="frame" x="0.0" y="0.0" width="580" height="140"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="2EC-D8-VUG"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="Edp-Z9-kp4" kind="embed" identifier="embedUnwantedIngredientList" id="KrN-XA-3d4"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="2EC-D8-VUG"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Qa-Lt-0km" secondAttribute="bottom" id="9iw-XQ-yjf"/>
+                                    <constraint firstItem="8Qa-Lt-0km" firstAttribute="leading" secondItem="sr7-lY-onZ" secondAttribute="leading" id="P4J-vq-pyy"/>
+                                    <constraint firstItem="8Qa-Lt-0km" firstAttribute="top" secondItem="sr7-lY-onZ" secondAttribute="top" id="SYl-Sm-bCl"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Qa-Lt-0km" secondAttribute="trailing" id="nbW-3w-bjE"/>
                                 </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQn-Qs-aKJ">
+                                <rect key="frame" x="0.0" y="60" width="600" height="335"/>
                                 <connections>
-                                    <segue destination="Edp-Z9-kp4" kind="embed" identifier="embedUnwantedIngredientList" id="KrN-XA-3d4"/>
+                                    <segue destination="izd-ME-Vdo" kind="embed" identifier="embedIngredientList" id="m6l-NZ-QTc"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mQn-Qs-aKJ" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" id="3Z9-tK-loY"/>
+                            <constraint firstItem="sr7-lY-onZ" firstAttribute="top" secondItem="VMX-1V-CBl" secondAttribute="bottom" constant="5" id="3wG-At-F8O"/>
                             <constraint firstItem="VMX-1V-CBl" firstAttribute="top" secondItem="mQn-Qs-aKJ" secondAttribute="bottom" id="542-FX-WCg"/>
                             <constraint firstAttribute="trailing" secondItem="mQn-Qs-aKJ" secondAttribute="trailing" id="8jK-Lk-mXW"/>
                             <constraint firstItem="VMX-1V-CBl" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" id="94f-A7-Osr"/>
-                            <constraint firstItem="8Qa-Lt-0km" firstAttribute="top" secondItem="VMX-1V-CBl" secondAttribute="bottom" id="9XL-dW-HYY"/>
                             <constraint firstItem="IEc-pI-SbE" firstAttribute="top" secondItem="qhi-D5-GEe" secondAttribute="top" id="B9k-Pv-Cw3"/>
+                            <constraint firstAttribute="bottom" secondItem="sr7-lY-onZ" secondAttribute="bottom" constant="5" id="Fx8-lX-WnR"/>
                             <constraint firstItem="mQn-Qs-aKJ" firstAttribute="top" secondItem="IEc-pI-SbE" secondAttribute="bottom" id="HQd-dY-pvw"/>
-                            <constraint firstAttribute="trailing" secondItem="8Qa-Lt-0km" secondAttribute="trailing" id="Knb-w5-T9V"/>
                             <constraint firstAttribute="trailing" secondItem="VMX-1V-CBl" secondAttribute="trailing" id="OZq-CP-Q7X"/>
-                            <constraint firstItem="8Qa-Lt-0km" firstAttribute="top" secondItem="mQn-Qs-aKJ" secondAttribute="bottom" id="QsQ-aV-89y"/>
                             <constraint firstAttribute="trailing" secondItem="IEc-pI-SbE" secondAttribute="trailing" id="VMW-F8-T0u"/>
-                            <constraint firstItem="ZAO-4H-qt9" firstAttribute="top" secondItem="8Qa-Lt-0km" secondAttribute="bottom" id="WAP-zP-bVc"/>
-                            <constraint firstItem="8Qa-Lt-0km" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" id="v9j-u8-2Ug"/>
+                            <constraint firstAttribute="trailing" secondItem="sr7-lY-onZ" secondAttribute="trailing" constant="10" id="ZGc-U2-cKq"/>
+                            <constraint firstItem="sr7-lY-onZ" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" constant="10" id="fJj-7L-NIc"/>
                             <constraint firstItem="IEc-pI-SbE" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" id="x9k-Tc-bdV"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="QsQ-aV-89y"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="wsw-ly-qMr" id="8V8-wg-coW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EW-uo-xHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,7 +166,7 @@
             <objects>
                 <collectionViewController id="Edp-Z9-kp4" customClass="UnwantedIngredientCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5pi-X3-SVD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="140"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NZy-kz-sIV">
                             <size key="itemSize" width="100" height="100"/>
@@ -155,7 +190,7 @@
             <objects>
                 <collectionViewController id="izd-ME-Vdo" customClass="IngredientListCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="MUp-1Y-MU6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pob-VR-3R5">
                             <size key="itemSize" width="100" height="100"/>

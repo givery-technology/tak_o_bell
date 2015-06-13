@@ -9,8 +9,11 @@
 #import "IngredientSelectionContainerViewController.h"
 #import "IngredientListCollectionViewController.h"
 #import "UnwantedIngredientCollectionViewController.h"
+#import "CameraViewController.h"
 
 @interface IngredientSelectionContainerViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @property (nonatomic, weak) IngredientListCollectionViewController *ingredientListViewController;
 @property (nonatomic, weak) UnwantedIngredientCollectionViewController *unwantedIngredientListViewController;
@@ -23,6 +26,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.ingredientsList = [[IngredientsList alloc] init];
+    [[self.nextButton layer] setBorderWidth:2.0f];
+    [[self.nextButton layer] setCornerRadius:10];
+    [[self.nextButton layer] setBorderColor:[UIColor whiteColor].CGColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +52,13 @@
         self.unwantedIngredientListViewController = (UnwantedIngredientCollectionViewController *)segue.destinationViewController;
         self.unwantedIngredientListViewController.ingredientsList = self.ingredientsList;
     }
+}
+
+#pragma  mark - IBAction
+
+- (IBAction)didTapNext:(id)sender {
+    CameraViewController *cameraViewController = [[CameraViewController alloc] init];
+    [self.navigationController pushViewController:cameraViewController animated:YES];
 }
 
 
