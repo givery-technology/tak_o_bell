@@ -1,3 +1,9 @@
 **/xcuserdata/**
 *.xcuserstate
 
+backend/dev
+backend/out
+backend/out.jpg
+backend/gmon.out
+backend/*.o
+backend/.*.sw*
