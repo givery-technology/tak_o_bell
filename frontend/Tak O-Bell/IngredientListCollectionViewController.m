@@ -87,9 +87,6 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     [self.ingredientsList saveUnwantedIngredients];
     self.ingredientsList.allIngredients = list;
     [self.collectionView reloadData];
-    CameraViewController *cam = [[CameraViewController alloc] init];
-    [self presentViewController:cam animated:NO completion:nil];
-//    self.view.window.rootViewController = cam;
 }
 
 /*

@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController">
             <connections>
                 <outlet property="overlayView" destination="iN0-l3-epB" id="sNl-9x-S7J"/>
+                <outlet property="returnToPreferencesButton" destination="8J8-Wc-ah3" id="UEU-63-Lee"/>
                 <outlet property="takePictureButton" destination="z8Q-Cm-KGx" id="7AF-Kc-HBP"/>
             </connections>
         </placeholder>
@@ -29,19 +30,30 @@
                         <action selector="takePictureButtonPressed:" destination="-1" eventType="touchUpInside" id="3eN-lJ-OVO"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rKd-Wj-MpT">
-                    <rect key="frame" x="8" y="512" width="64" height="58"/>
-                    <color key="backgroundColor" red="0.98823529409999999" green="0.68627450980000004" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S6K-U4-dQg">
-                    <rect key="frame" x="25" y="32" width="103" height="87"/>
-                    <color key="backgroundColor" red="0.1647058824" green="0.73333333329999995" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8J8-Wc-ah3">
+                    <rect key="frame" x="8" y="30" width="46" height="46"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="MSb-Ca-dWA"/>
+                        <constraint firstAttribute="height" constant="46" id="WCk-oX-Cyz"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="z8Q-Cm-KGx" secondAttribute="bottom" constant="8" id="10O-Ha-PYa"/>
                 <constraint firstAttribute="centerX" secondItem="z8Q-Cm-KGx" secondAttribute="centerX" id="6Ys-c0-jd9"/>
+                <constraint firstItem="8J8-Wc-ah3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="NQJ-xB-WH1"/>
+                <constraint firstItem="8J8-Wc-ah3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="ceY-02-EGM"/>
+                <constraint firstItem="8J8-Wc-ah3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="yKM-qZ-oSB"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="yKM-qZ-oSB"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>
