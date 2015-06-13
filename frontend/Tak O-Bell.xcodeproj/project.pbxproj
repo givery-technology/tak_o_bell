@@ -21,6 +21,7 @@
 		D39664101B2C084E008277FA /* Ingredient.m in Sources */ = {isa = PBXBuildFile; fileRef = D396640F1B2C084E008277FA /* Ingredient.m */; };
 		D39664131B2C1087008277FA /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39664121B2C1087008277FA /* CameraViewController.m */; };
 		D396641A1B2C24BC008277FA /* IngredientsList.m in Sources */ = {isa = PBXBuildFile; fileRef = D39664191B2C24BC008277FA /* IngredientsList.m */; };
+		D3B0FB591B2C405E0048A363 /* IngredientSelectionContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B0FB581B2C405E0048A363 /* IngredientSelectionContainerViewController.m */; };
 		E685742E208CAF802A70DD36 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EED24AB415C23A184987932A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		D39664121B2C1087008277FA /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		D39664181B2C24BC008277FA /* IngredientsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientsList.h; sourceTree = "<group>"; };
 		D39664191B2C24BC008277FA /* IngredientsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientsList.m; sourceTree = "<group>"; };
+		D3B0FB571B2C405E0048A363 /* IngredientSelectionContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientSelectionContainerViewController.h; sourceTree = "<group>"; };
+		D3B0FB581B2C405E0048A363 /* IngredientSelectionContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientSelectionContainerViewController.m; sourceTree = "<group>"; };
 		EED24AB415C23A184987932A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +108,8 @@
 		CD4543431B2BFD3900A12DE1 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D3B0FB571B2C405E0048A363 /* IngredientSelectionContainerViewController.h */,
+				D3B0FB581B2C405E0048A363 /* IngredientSelectionContainerViewController.m */,
 				CD45434C1B2C06FF00A12DE1 /* IngredientCollectionViewCell.h */,
 				CD45434D1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m */,
 				CD4543491B2BFE8C00A12DE1 /* IngredientListCollectionViewController.h */,
@@ -340,6 +345,7 @@
 				D396640D1B2BF842008277FA /* TakoAPIClient.m in Sources */,
 				D39664101B2C084E008277FA /* Ingredient.m in Sources */,
 				CD45434F1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m in Sources */,
+				D3B0FB591B2C405E0048A363 /* IngredientSelectionContainerViewController.m in Sources */,
 				D396641A1B2C24BC008277FA /* IngredientsList.m in Sources */,
 				CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */,
 				D39664131B2C1087008277FA /* CameraViewController.m in Sources */,

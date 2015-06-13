@@ -86,7 +86,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     [self.ingredientsList.unwantedIngredients addObject:unwanted];
     self.ingredientsList.allIngredients = list;
     [self.ingredientsList saveUnwantedIngredients];
-    //[self.ingredientsList saveAllIngredients];
+    [self.ingredientsList saveAllIngredients];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedAdded" object:self];
     [self.collectionView reloadData];
 }
@@ -123,6 +123,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 #pragma  mark NSNotification
 
 - (void)userRemoveUnwanted {
+    [self.ingredientsList getAllIngredients];
     [self.collectionView reloadData];
 }
 
