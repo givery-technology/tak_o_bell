@@ -9,6 +9,7 @@
 #import "IngredientsList.h"
 #import "Ingredient.h"
 
+NSString * const kWantedIngredientsKey = @"WantedIngredients";
 NSString * const kUnwantedIngredientsKey = @"UnwantedIngredients";
 
 @implementation IngredientsList
@@ -46,11 +47,34 @@ NSString * const kUnwantedIngredientsKey = @"UnwantedIngredients";
     return t.task;
 }
 
+- (BFTask *)getAllIngredients {
+    BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray *savedListofAllIngredients = [userDefaults objectForKey:kWantedIngredientsKey];
+    [self.allIngredients removeAllObjects];
+    for (NSString *ingredientName in savedListofAllIngredients) {
+        [self.allIngredients addObject:[Ingredient ingredientWithName:ingredientName image:[UIImage imageNamed:@""]]];
+    }
+    return t.task;
+}
+         
+- (BFTask *)saveAllIngredients {
+    BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *listOfAllIngredients = [[NSMutableArray alloc] init];;
+    for (Ingredient *ingredient in self.allIngredients) {
+        [listOfAllIngredients addObject:ingredient.name];
+    }
+    [userDefaults setObject:listOfAllIngredients forKey:kWantedIngredientsKey];
+    [t setResult:@([userDefaults synchronize])];
+    return t.task;
+}
+
 - (BFTask *)saveUnwantedIngredients {
     BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *listOfUnwantedIngredients = [[NSMutableArray alloc] init];;
-    for (Ingredient *ingredient in self.allIngredients) {
+    for (Ingredient *ingredient in self.unwantedIngredients) {
         [listOfUnwantedIngredients addObject:ingredient.name];
     }
     [userDefaults setObject:listOfUnwantedIngredients forKey:kUnwantedIngredientsKey];

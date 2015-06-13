@@ -20,7 +20,7 @@
 
 @implementation UnwantedIngredientCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"IngredientCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,16 +71,20 @@ static NSString * const reuseIdentifier = @"Cell";
     return cell;
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(20, 20, 20, 20);
+}
+
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSMutableArray *list = [[NSMutableArray alloc] initWithArray:self.ingredientsList.unwantedIngredients];
-    Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
+    Ingredient *unwanted = list[indexPath.row];
     [list removeObjectAtIndex:indexPath.row];
     [self.ingredientsList.allIngredients addObject:unwanted];
-    //[self.ingredientsList saveUnwantedIngredients];
     self.ingredientsList.unwantedIngredients = list;
-    
+    [self.ingredientsList saveUnwantedIngredients];
+    [self.ingredientsList saveAllIngredients];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedRemoved" object:self];
     [self.collectionView reloadData];
 }
@@ -118,6 +122,7 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark NSNotication
 
 - (void)userAddedUnwanted {
+    [self.ingredientsList getUnwatedIngredients];
     [self.collectionView reloadData];
 }
 

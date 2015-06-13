@@ -41,11 +41,10 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 
 -(void)setupCollectionView {
     self.ingredientsList = [[IngredientsList alloc] init];
-    
     UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRemoveUnwanted) name:@"UnwatnedRemoved" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRemoveUnwanted) name:@"UnwantedRemoved" object:nil];
 //    
 //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
 //    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -85,9 +84,9 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
     [list removeObjectAtIndex:indexPath.row];
     [self.ingredientsList.unwantedIngredients addObject:unwanted];
-    [self.ingredientsList saveUnwantedIngredients];
     self.ingredientsList.allIngredients = list;
-    
+    [self.ingredientsList saveUnwantedIngredients];
+    //[self.ingredientsList saveAllIngredients];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedAdded" object:self];
     [self.collectionView reloadData];
 }
