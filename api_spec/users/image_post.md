@@ -1,11 +1,11 @@
 # Post image
 ## Request
-* token: string
+* ~~token: string~~
 * image: file
+* dislikes: [string]
 
 ## Expected responce
 * code: int
 * message: string
-* removed_menus: [string]
-* dislikes: [string]
-* renewed_image: image_path
+* removed_items: [string]
+* renewed_image: string
