@@ -44,13 +44,12 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     
     UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
-    
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [flowLayout setMinimumInteritemSpacing:0.0f];
-    [flowLayout setMinimumLineSpacing:0.0f];
-    [self.collectionView setPagingEnabled:YES];
-    [self.collectionView setCollectionViewLayout:flowLayout];
+//    
+//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+//    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+//
+//    [self.collectionView setPagingEnabled:YES];
+//    [self.collectionView setCollectionViewLayout:flowLayout];
 }
 
 
@@ -62,7 +61,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return self.ingredientsList.allIngredients.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -78,6 +77,16 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 }
 
 #pragma mark <UICollectionViewDelegate>
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSMutableArray *list = [[NSMutableArray alloc] initWithArray:self.ingredientsList.allIngredients];
+    Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
+    [list removeObjectAtIndex:indexPath.row];
+    [self.ingredientsList.unwantedIngredients addObject:unwanted];
+    //[self.ingredientsList saveUnwantedIngredients];
+    self.ingredientsList.allIngredients = list;
+    [self.collectionView reloadData];
+}
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking

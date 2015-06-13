@@ -20,7 +20,16 @@ NSString * const kUnwantedIngredientsKey = @"UnwantedIngredients";
                             [Ingredient ingredientWithName:@"Peanuts" image:[UIImage imageNamed:@""]],
                             [Ingredient ingredientWithName:@"Pork" image:[UIImage imageNamed:@""]],
                             [Ingredient ingredientWithName:@"Caffeine" image:[UIImage imageNamed:@""]],
-                            [Ingredient ingredientWithName:@"Gluten" image:[UIImage imageNamed:@""]]];
+                            [Ingredient ingredientWithName:@"Gluten" image:[UIImage imageNamed:@""]],
+                            [Ingredient ingredientWithName:@"Dog" image:[UIImage imageNamed:@""]],
+                            [Ingredient ingredientWithName:@"Cat" image:[UIImage imageNamed:@""]],
+                            [Ingredient ingredientWithName:@"Frog" image:[UIImage imageNamed:@""]],
+                            [Ingredient ingredientWithName:@"Human" image:[UIImage imageNamed:@""]],
+                            [Ingredient ingredientWithName:@"Monkey" image:[UIImage imageNamed:@""]],
+                            [Ingredient ingredientWithName:@"Wheat" image:[UIImage imageNamed:@""]],
+                            [Ingredient ingredientWithName:@"Water" image:[UIImage imageNamed:@""]],
+                            [Ingredient ingredientWithName:@"Onions" image:[UIImage imageNamed:@""]],
+                            [Ingredient ingredientWithName:@"Bananas" image:[UIImage imageNamed:@""]]];
         _unwantedIngredients = [[NSMutableSet alloc] init];
     }
     return self;
