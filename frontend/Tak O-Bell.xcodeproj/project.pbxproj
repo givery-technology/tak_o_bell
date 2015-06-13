@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD4543481B2BFDB500A12DE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4543471B2BFDB500A12DE1 /* Main.storyboard */; };
+		CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45434A1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m */; };
+		CD45434F1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45434D1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m */; };
+		CD4543501B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */; };
 		D38501551B2BF42F003606F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501541B2BF42F003606F9 /* main.m */; };
 		D38501581B2BF42F003606F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501571B2BF42F003606F9 /* AppDelegate.m */; };
-		D385015E1B2BF42F003606F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D385015C1B2BF42F003606F9 /* Main.storyboard */; };
 		D38501601B2BF42F003606F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D385015F1B2BF42F003606F9 /* Images.xcassets */; };
 		D38501631B2BF42F003606F9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38501611B2BF42F003606F9 /* LaunchScreen.xib */; };
 		D385016F1B2BF42F003606F9 /* Tak_O_BellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D385016E1B2BF42F003606F9 /* Tak_O_BellTests.m */; };
@@ -29,12 +32,17 @@
 /* Begin PBXFileReference section */
 		7486C577A711D449AC7E2250 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7A9503E2CF5309430434C309 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CD4543471B2BFDB500A12DE1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CD4543491B2BFE8C00A12DE1 /* IngredientListCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientListCollectionViewController.h; sourceTree = "<group>"; };
+		CD45434A1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientListCollectionViewController.m; sourceTree = "<group>"; };
+		CD45434C1B2C06FF00A12DE1 /* IngredientCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientCollectionViewCell.h; sourceTree = "<group>"; };
+		CD45434D1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientCollectionViewCell.m; sourceTree = "<group>"; };
+		CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IngredientCollectionViewCell.xib; sourceTree = "<group>"; };
 		D385014F1B2BF42F003606F9 /* Tak O-Bell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tak O-Bell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38501531B2BF42F003606F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38501541B2BF42F003606F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D38501561B2BF42F003606F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D38501571B2BF42F003606F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D385015D1B2BF42F003606F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D385015F1B2BF42F003606F9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D38501621B2BF42F003606F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D38501681B2BF42F003606F9 /* Tak O-BellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tak O-BellTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +87,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CD4543431B2BFD3900A12DE1 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CD45434C1B2C06FF00A12DE1 /* IngredientCollectionViewCell.h */,
+				CD45434D1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m */,
+				CD4543491B2BFE8C00A12DE1 /* IngredientListCollectionViewController.h */,
+				CD45434A1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		CD4543441B2BFD4100A12DE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD4543471B2BFDB500A12DE1 /* Main.storyboard */,
+				CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		D38501461B2BF42E003606F9 = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +130,10 @@
 		D38501511B2BF42F003606F9 /* Tak O-Bell */ = {
 			isa = PBXGroup;
 			children = (
+				CD4543441B2BFD4100A12DE1 /* View */,
+				CD4543431B2BFD3900A12DE1 /* View Controller */,
 				D38501561B2BF42F003606F9 /* AppDelegate.h */,
 				D38501571B2BF42F003606F9 /* AppDelegate.m */,
-				D385015C1B2BF42F003606F9 /* Main.storyboard */,
 				D385015F1B2BF42F003606F9 /* Images.xcassets */,
 				D38501611B2BF42F003606F9 /* LaunchScreen.xib */,
 				D38501521B2BF42F003606F9 /* Supporting Files */,
@@ -220,8 +249,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D385015E1B2BF42F003606F9 /* Main.storyboard in Resources */,
+				CD4543481B2BFDB500A12DE1 /* Main.storyboard in Resources */,
 				D38501631B2BF42F003606F9 /* LaunchScreen.xib in Resources */,
+				CD4543501B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib in Resources */,
 				D38501601B2BF42F003606F9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +304,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D38501581B2BF42F003606F9 /* AppDelegate.m in Sources */,
+				CD45434F1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m in Sources */,
+				CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */,
 				D38501551B2BF42F003606F9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,14 +329,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D385015C1B2BF42F003606F9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D385015D1B2BF42F003606F9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D38501611B2BF42F003606F9 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
