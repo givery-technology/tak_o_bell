@@ -7,9 +7,12 @@
 //
 
 #import "AFHTTPSessionManager.h"
+#import <Bolts.h>
 
 @interface TakoAPIClient : AFHTTPSessionManager
 
 + (instancetype)sharedClient;
+
+- (BFTask *)getRestrictedVersionOfMenu:(UIImage *)menuImage dietaryPreferences:(NSDictionary *)dietaryPreferences;
 
 @end

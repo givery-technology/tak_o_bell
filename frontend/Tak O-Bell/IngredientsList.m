@@ -9,6 +9,8 @@
 #import "IngredientsList.h"
 #import "Ingredient.h"
 
+NSString * const kUnwantedIngredientsKey = @"UnwantedIngredients";
+
 @implementation IngredientsList
 
 - (instancetype)init {
@@ -24,8 +26,19 @@
     return self;
 }
 
+- (BFTask *)getUnwatedIngredients {
+    BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.unwantedIngredients = [userDefaults objectForKey:kUnwantedIngredientsKey];
+    return t.task;
+}
+
 - (BFTask *)saveUnwantedIngredients {
-    return nil;
+    BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:self.unwantedIngredients forKey:kUnwantedIngredientsKey];
+    [t setResult:@([userDefaults synchronize])];
+    return t.task;
 }
 
 @end

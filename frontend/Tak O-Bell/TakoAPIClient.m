@@ -7,7 +7,6 @@
 //
 
 #import "TakoAPIClient.h"
-#import <Bolts.h>
 
 @implementation TakoAPIClient
 
@@ -28,11 +27,12 @@
     return self;
 }
 
-- (BFTask *)sendMenu:(UIImage *)menuImage dietaryPreferences:(NSDictionary *)dietaryPreferences {
+- (BFTask *)getRestrictedVersionOfMenu:(UIImage *)menuImage dietaryPreferences:(NSDictionary *)dietaryPreferences {
     NSData *menuImageData = [NSData dataWithData:UIImageJPEGRepresentation(menuImage, 1.0f)];
+    NSDictionary *parameters = @{@"dislikes": [dietaryPreferences allValues]};
     BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
-    [self POST:@"aaa" parameters:dietaryPreferences constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:menuImageData name:@"menu_image" fileName:@"menu_image.jpg" mimeType:@"image/jpeg"];
+    [self POST:@"/api/users/image" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:menuImageData name:@"image" fileName:@"image.jpg" mimeType:@"image/jpeg"];
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         [t setResult:responseObject];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
