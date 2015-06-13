@@ -85,15 +85,12 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSMutableArray *list = [[NSMutableArray alloc] initWithArray:self.ingredientsList.allIngredients];
     Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
-    [list removeObjectAtIndex:indexPath.row];
+    [self.ingredientsList.allIngredients removeObjectAtIndex:indexPath.row];
     [self.ingredientsList.unwantedIngredients addObject:unwanted];
-    self.ingredientsList.allIngredients = list;
-    [self.ingredientsList saveUnwantedIngredients];
-    [self.ingredientsList saveAllIngredients];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedAdded" object:self];
     [self.collectionView reloadData];
+
 }
 
 /*
@@ -128,7 +125,6 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 #pragma  mark NSNotification
 
 - (void)userRemoveUnwanted {
-    [self.ingredientsList getAllIngredients];
     [self.collectionView reloadData];
 }
 
