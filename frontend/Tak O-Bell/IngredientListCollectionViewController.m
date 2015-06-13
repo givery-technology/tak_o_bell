@@ -15,7 +15,7 @@
 
 @implementation IngredientListCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"IngredientCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
