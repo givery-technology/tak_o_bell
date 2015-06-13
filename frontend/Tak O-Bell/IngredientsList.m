@@ -16,12 +16,21 @@ NSString * const kUnwantedIngredientsKey = @"UnwantedIngredients";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _allIngredients = @[[Ingredient ingredientWithName:@"Fish" image:[UIImage imageNamed:@""]],
-                            [Ingredient ingredientWithName:@"Peanuts" image:[UIImage imageNamed:@""]],
-                            [Ingredient ingredientWithName:@"Pork" image:[UIImage imageNamed:@""]],
-                            [Ingredient ingredientWithName:@"Caffeine" image:[UIImage imageNamed:@""]],
-                            [Ingredient ingredientWithName:@"Gluten" image:[UIImage imageNamed:@""]]];
-        _unwantedIngredients = [[NSMutableSet alloc] init];
+        _allIngredients = [NSMutableArray arrayWithArray:@[[Ingredient ingredientWithName:@"Fish" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Peanuts" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Pork" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Caffeine" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Gluten" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Dog" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Cat" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Frog" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Human" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Monkey" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Wheat" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Water" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Onions" image:[UIImage imageNamed:@""]],
+                                                           [Ingredient ingredientWithName:@"Bananas" image:[UIImage imageNamed:@""]]]];
+        _unwantedIngredients = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -29,14 +38,22 @@ NSString * const kUnwantedIngredientsKey = @"UnwantedIngredients";
 - (BFTask *)getUnwatedIngredients {
     BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    self.unwantedIngredients = [userDefaults objectForKey:kUnwantedIngredientsKey];
+    NSArray *savedListOfUnwantedIngredients = [userDefaults objectForKey:kUnwantedIngredientsKey];
+    [self.unwantedIngredients removeAllObjects];
+    for (NSString *ingredientName in savedListOfUnwantedIngredients) {
+        [self.unwantedIngredients addObject:[Ingredient ingredientWithName:ingredientName image:[UIImage imageNamed:@""]]];
+    }
     return t.task;
 }
 
 - (BFTask *)saveUnwantedIngredients {
     BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:self.unwantedIngredients forKey:kUnwantedIngredientsKey];
+    NSMutableArray *listOfUnwantedIngredients = [[NSMutableArray alloc] init];;
+    for (Ingredient *ingredient in self.allIngredients) {
+        [listOfUnwantedIngredients addObject:ingredient.name];
+    }
+    [userDefaults setObject:listOfUnwantedIngredients forKey:kUnwantedIngredientsKey];
     [t setResult:@([userDefaults synchronize])];
     return t.task;
 }

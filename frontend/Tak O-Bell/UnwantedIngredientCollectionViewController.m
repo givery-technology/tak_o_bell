@@ -1,28 +1,26 @@
 //
-//  IngredientListCollectionViewController.m
+//  UnwantedIngredientCollectionViewController.m
 //  Tak O-Bell
 //
 //  Created by Albert Le on 2015-06-13.
 //  Copyright (c) 2015 Tak O-Bell. All rights reserved.
 //
 
-
 #import "Ingredient.h"
 #import "IngredientsList.h"
 #import "IngredientCollectionViewCell.h"
-#import "IngredientListCollectionViewController.h"
+#import "UnwantedIngredientCollectionViewController.h"
 
-
-@interface IngredientListCollectionViewController ()
+@interface UnwantedIngredientCollectionViewController ()
 
 @property (nonatomic, strong) IngredientsList *ingredientsList;
 @property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
-@implementation IngredientListCollectionViewController
+@implementation UnwantedIngredientCollectionViewController
 
-static NSString * const reuseIdentifier = @"IngredientCell";
+static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,12 +42,12 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     
     UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
-//    
-//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-//    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-//
-//    [self.collectionView setPagingEnabled:YES];
-//    [self.collectionView setCollectionViewLayout:flowLayout];
+    //
+    //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    //    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    //
+    //    [self.collectionView setPagingEnabled:YES];
+    //    [self.collectionView setCollectionViewLayout:flowLayout];
 }
 
 
@@ -61,32 +59,17 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.ingredientsList.allIngredients.count;
+    return self.ingredientsList.unwantedIngredients.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     IngredientCollectionViewCell *cell = (IngredientCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    Ingredient *ingredient =  self.ingredientsList.allIngredients[indexPath.row];
+    Ingredient *ingredient =  self.ingredientsList.unwantedIngredients[indexPath.row];
     cell.ingredientName.text = ingredient.name;
     return cell;
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(20, 20, 20, 20);
-}
-
 #pragma mark <UICollectionViewDelegate>
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSMutableArray *list = [[NSMutableArray alloc] initWithArray:self.ingredientsList.allIngredients];
-    Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
-    [list removeObjectAtIndex:indexPath.row];
-    [self.ingredientsList.unwantedIngredients addObject:unwanted];
-    [self.ingredientsList saveUnwantedIngredients];
-    self.ingredientsList.allIngredients = list;
-    [self.collectionView reloadData];
-}
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
