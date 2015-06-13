@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CD4543481B2BFDB500A12DE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4543471B2BFDB500A12DE1 /* Main.storyboard */; };
 		CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45434A1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m */; };
+		CD4543571B2C14B600A12DE1 /* IngredientCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4543551B2C14B600A12DE1 /* IngredientCollectionViewCell.m */; };
+		CD4543581B2C14B600A12DE1 /* IngredientCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4543561B2C14B600A12DE1 /* IngredientCollectionViewCell.xib */; };
 		D38501551B2BF42F003606F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501541B2BF42F003606F9 /* main.m */; };
 		D38501581B2BF42F003606F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501571B2BF42F003606F9 /* AppDelegate.m */; };
 		D38501601B2BF42F003606F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D385015F1B2BF42F003606F9 /* Images.xcassets */; };
@@ -35,6 +37,9 @@
 		CD4543471B2BFDB500A12DE1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CD4543491B2BFE8C00A12DE1 /* IngredientListCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientListCollectionViewController.h; sourceTree = "<group>"; };
 		CD45434A1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientListCollectionViewController.m; sourceTree = "<group>"; };
+		CD4543541B2C14B600A12DE1 /* IngredientCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientCollectionViewCell.h; sourceTree = "<group>"; };
+		CD4543551B2C14B600A12DE1 /* IngredientCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientCollectionViewCell.m; sourceTree = "<group>"; };
+		CD4543561B2C14B600A12DE1 /* IngredientCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IngredientCollectionViewCell.xib; sourceTree = "<group>"; };
 		D385014F1B2BF42F003606F9 /* Tak O-Bell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tak O-Bell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38501531B2BF42F003606F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38501541B2BF42F003606F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,6 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				CD4543471B2BFDB500A12DE1 /* Main.storyboard */,
+				CD4543541B2C14B600A12DE1 /* IngredientCollectionViewCell.h */,
+				CD4543551B2C14B600A12DE1 /* IngredientCollectionViewCell.m */,
+				CD4543561B2C14B600A12DE1 /* IngredientCollectionViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -253,6 +261,7 @@
 			files = (
 				CD4543481B2BFDB500A12DE1 /* Main.storyboard in Resources */,
 				D38501631B2BF42F003606F9 /* LaunchScreen.xib in Resources */,
+				CD4543581B2C14B600A12DE1 /* IngredientCollectionViewCell.xib in Resources */,
 				D38501601B2BF42F003606F9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +316,7 @@
 				D38501581B2BF42F003606F9 /* AppDelegate.m in Sources */,
 				D396640D1B2BF842008277FA /* TakoAPIClient.m in Sources */,
 				D39664101B2C084E008277FA /* Ingredient.m in Sources */,
+				CD4543571B2C14B600A12DE1 /* IngredientCollectionViewCell.m in Sources */,
 				CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */,
 				D38501551B2BF42F003606F9 /* main.m in Sources */,
 			);
