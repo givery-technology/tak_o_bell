@@ -316,6 +316,8 @@
 				D38501581B2BF42F003606F9 /* AppDelegate.m in Sources */,
 				D396640D1B2BF842008277FA /* TakoAPIClient.m in Sources */,
 				D39664101B2C084E008277FA /* Ingredient.m in Sources */,
+				CD45434F1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m in Sources */,
+				CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */,
 				D38501551B2BF42F003606F9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
