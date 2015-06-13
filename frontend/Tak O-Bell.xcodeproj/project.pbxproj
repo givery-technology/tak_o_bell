@@ -18,6 +18,7 @@
 		D385016F1B2BF42F003606F9 /* Tak_O_BellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D385016E1B2BF42F003606F9 /* Tak_O_BellTests.m */; };
 		D396640D1B2BF842008277FA /* TakoAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D396640C1B2BF842008277FA /* TakoAPIClient.m */; };
 		D39664101B2C084E008277FA /* Ingredient.m in Sources */ = {isa = PBXBuildFile; fileRef = D396640F1B2C084E008277FA /* Ingredient.m */; };
+		D39664171B2C1129008277FA /* IngredientsList.m in Sources */ = {isa = PBXBuildFile; fileRef = D39664161B2C1129008277FA /* IngredientsList.m */; };
 		E685742E208CAF802A70DD36 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EED24AB415C23A184987932A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		D396640C1B2BF842008277FA /* TakoAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakoAPIClient.m; sourceTree = "<group>"; };
 		D396640E1B2C084E008277FA /* Ingredient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ingredient.h; sourceTree = "<group>"; };
 		D396640F1B2C084E008277FA /* Ingredient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ingredient.m; sourceTree = "<group>"; };
+		D39664151B2C1129008277FA /* IngredientsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientsList.h; sourceTree = "<group>"; };
+		D39664161B2C1129008277FA /* IngredientsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientsList.m; sourceTree = "<group>"; };
 		EED24AB415C23A184987932A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -138,6 +141,7 @@
 			children = (
 				CD4543441B2BFD4100A12DE1 /* View */,
 				CD4543431B2BFD3900A12DE1 /* View Controller */,
+				D39664141B2C110A008277FA /* Models */,
 				D38501561B2BF42F003606F9 /* AppDelegate.h */,
 				D38501571B2BF42F003606F9 /* AppDelegate.m */,
 				D385015F1B2BF42F003606F9 /* Images.xcassets */,
@@ -145,8 +149,6 @@
 				D38501521B2BF42F003606F9 /* Supporting Files */,
 				D396640B1B2BF842008277FA /* TakoAPIClient.h */,
 				D396640C1B2BF842008277FA /* TakoAPIClient.m */,
-				D396640E1B2C084E008277FA /* Ingredient.h */,
-				D396640F1B2C084E008277FA /* Ingredient.m */,
 			);
 			path = "Tak O-Bell";
 			sourceTree = "<group>";
@@ -175,6 +177,17 @@
 				D385016D1B2BF42F003606F9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D39664141B2C110A008277FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D396640E1B2C084E008277FA /* Ingredient.h */,
+				D396640F1B2C084E008277FA /* Ingredient.m */,
+				D39664151B2C1129008277FA /* IngredientsList.h */,
+				D39664161B2C1129008277FA /* IngredientsList.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +331,7 @@
 				D39664101B2C084E008277FA /* Ingredient.m in Sources */,
 				CD45434F1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m in Sources */,
 				CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */,
+				D39664171B2C1129008277FA /* IngredientsList.m in Sources */,
 				D38501551B2BF42F003606F9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
