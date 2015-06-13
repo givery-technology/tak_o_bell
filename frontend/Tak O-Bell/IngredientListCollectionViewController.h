@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IngredientListCollectionViewController : UICollectionViewController
+@interface IngredientListCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end

@@ -10,6 +10,8 @@
 
 @interface IngredientCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) NSString *imageName;
+@property (weak, nonatomic) IBOutlet UIImageView *ingredientImage;
+@property (weak, nonatomic) IBOutlet UILabel *ingredientName;
+
 
 @end
