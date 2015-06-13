@@ -44,6 +44,8 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     
     UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRemoveUnwanted) name:@"UnwatnedRemoved" object:nil];
 //    
 //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
 //    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -85,6 +87,8 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     [self.ingredientsList.unwantedIngredients addObject:unwanted];
     //[self.ingredientsList saveUnwantedIngredients];
     self.ingredientsList.allIngredients = list;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedAdded" object:self];
     [self.collectionView reloadData];
 }
 
@@ -116,5 +120,11 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 	
 }
 */
+
+#pragma  mark NSNotification
+
+- (void)userRemoveUnwanted {
+    [self.collectionView reloadData];
+}
 
 @end

@@ -42,6 +42,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAddedUnwanted) name:@"UnwantedAdded" object:nil];
     //
     //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     //    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -71,6 +73,19 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark <UICollectionViewDelegate>
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSMutableArray *list = [[NSMutableArray alloc] initWithArray:self.ingredientsList.unwantedIngredients];
+    Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
+    [list removeObjectAtIndex:indexPath.row];
+    [self.ingredientsList.allIngredients addObject:unwanted];
+    //[self.ingredientsList saveUnwantedIngredients];
+    self.ingredientsList.unwantedIngredients = list;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedRemoved" object:self];
+    [self.collectionView reloadData];
+}
+
+
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,5 +114,11 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+
+#pragma mark NSNotication
+
+- (void)userAddedUnwanted {
+    [self.collectionView reloadData];
+}
 
 @end
