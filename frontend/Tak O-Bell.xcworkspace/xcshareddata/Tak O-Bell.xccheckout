@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3FEFE070-EFA6-438D-BB9D-0755F6B28D85</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Tak O-Bell</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CD4501F4171588FD7E8CC4A4056C8B158A19CF23</key>
+		<string>https://github.com/givery-technology/tak_o_bell.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>frontend/Tak O-Bell.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CD4501F4171588FD7E8CC4A4056C8B158A19CF23</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/givery-technology/tak_o_bell.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CD4501F4171588FD7E8CC4A4056C8B158A19CF23</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CD4501F4171588FD7E8CC4A4056C8B158A19CF23</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tak_o_bell</string>
+		</dict>
+	</array>
+</dict>
+</plist>
