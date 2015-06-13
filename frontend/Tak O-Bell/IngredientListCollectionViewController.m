@@ -26,11 +26,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.ingredientsList = [[IngredientsList alloc] init];
-    
-    UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
-    [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
+    [self setupCollectionView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +38,21 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Assets"];
     self.dataArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:NULL];
 }
+
+-(void)setupCollectionView {
+    self.ingredientsList = [[IngredientsList alloc] init];
+    
+    UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
+    [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [flowLayout setMinimumInteritemSpacing:0.0f];
+    [flowLayout setMinimumLineSpacing:0.0f];
+    [self.collectionView setPagingEnabled:YES];
+    [self.collectionView setCollectionViewLayout:flowLayout];
+}
+
 
 #pragma mark <UICollectionViewDataSource>
 
