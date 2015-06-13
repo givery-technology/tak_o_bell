@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzK-LZ-HZn">
-                        <rect key="frame" x="2" y="31" width="46" height="17"/>
+                        <rect key="frame" x="2" y="23" width="46" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -26,7 +26,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="GzK-LZ-HZn" secondAttribute="trailing" constant="2" id="3d0-Bz-7S0"/>
-                <constraint firstAttribute="bottom" secondItem="GzK-LZ-HZn" secondAttribute="bottom" constant="2" id="Cwn-xb-4wA"/>
+                <constraint firstAttribute="bottom" secondItem="GzK-LZ-HZn" secondAttribute="bottom" constant="10" id="Cwn-xb-4wA"/>
                 <constraint firstAttribute="trailing" secondItem="CG5-9O-S7N" secondAttribute="trailing" id="EEq-Nd-DCy"/>
                 <constraint firstItem="CG5-9O-S7N" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FIx-E7-r9P"/>
                 <constraint firstItem="CG5-9O-S7N" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="c81-7Y-uKA"/>
