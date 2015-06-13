@@ -7,13 +7,12 @@
 //
 
 #import "Ingredient.h"
-#import "IngredientsList.h"
 #import "IngredientCollectionViewCell.h"
 #import "UnwantedIngredientCollectionViewController.h"
+#import "IngredientSelectionContainerViewController.h"
 
 @interface UnwantedIngredientCollectionViewController ()
 
-@property (nonatomic, strong) IngredientsList *ingredientsList;
 @property (nonatomic, strong) NSArray *dataArray;
 
 @end
@@ -23,10 +22,16 @@
 static NSString * const reuseIdentifier = @"IngredientCell";
 
 - (void)viewDidLoad {
+    NSLog(@"vdl2");
     [super viewDidLoad];
     [self setupCollectionView];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.ingredientsList = [(IngredientSelectionContainerViewController *)self.parentViewController ingredientsList];
+    [self.collectionView reloadData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -38,7 +43,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 }
 
 -(void)setupCollectionView {
-    self.ingredientsList = [[IngredientsList alloc] init];
+//    self.ingredientsList = [[IngredientsList alloc] init];
     
     UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];

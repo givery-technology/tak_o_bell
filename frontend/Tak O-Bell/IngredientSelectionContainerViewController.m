@@ -7,8 +7,13 @@
 //
 
 #import "IngredientSelectionContainerViewController.h"
+#import "IngredientListCollectionViewController.h"
+#import "UnwantedIngredientCollectionViewController.h"
 
 @interface IngredientSelectionContainerViewController ()
+
+@property (nonatomic, weak) IngredientListCollectionViewController *ingredientListViewController;
+@property (nonatomic, weak) UnwantedIngredientCollectionViewController *unwantedIngredientListViewController;
 
 @end
 
@@ -17,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.ingredientsList = [[IngredientsList alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +30,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSString *segueName = segue.identifier;
+    
+    if ([segueName isEqualToString:@"embedIngredientList"]) {//embedUnwantedIngredientList
+        NSLog(@"meow");
+        self.ingredientListViewController = (IngredientListCollectionViewController *)segue.destinationViewController;
+        self.ingredientListViewController.ingredientsList = self.ingredientsList;
+    } else if ([segueName isEqualToString:@"embedUnwantedIngredientList"]) {
+        NSLog(@"woof");
+        self.unwantedIngredientListViewController = (UnwantedIngredientCollectionViewController *)segue.destinationViewController;
+        self.unwantedIngredientListViewController.ingredientsList = self.ingredientsList;
+    }
 }
-*/
+
 
 @end

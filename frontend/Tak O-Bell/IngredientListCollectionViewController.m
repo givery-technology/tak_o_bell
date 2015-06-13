@@ -8,14 +8,12 @@
 
 
 #import "Ingredient.h"
-#import "IngredientsList.h"
 #import "IngredientCollectionViewCell.h"
 #import "IngredientListCollectionViewController.h"
-
+#import "IngredientSelectionContainerViewController.h"
 
 @interface IngredientListCollectionViewController ()
 
-@property (nonatomic, strong) IngredientsList *ingredientsList;
 @property (nonatomic, strong) NSArray *dataArray;
 
 @end
@@ -25,8 +23,15 @@
 static NSString * const reuseIdentifier = @"IngredientCell";
 
 - (void)viewDidLoad {
+    NSLog(@"vdl1");
     [super viewDidLoad];
     [self setupCollectionView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.ingredientsList = [(IngredientSelectionContainerViewController *)self.parentViewController ingredientsList];
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +45,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 }
 
 -(void)setupCollectionView {
-    self.ingredientsList = [[IngredientsList alloc] init];
+//    self.ingredientsList = [[IngredientsList alloc] init];
     UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
     
