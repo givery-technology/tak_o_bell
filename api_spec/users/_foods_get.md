@@ -1,4 +1,6 @@
 # Get food
+We won't use this API in this time.
+
 ## Request
 * token: string
 * length: int
