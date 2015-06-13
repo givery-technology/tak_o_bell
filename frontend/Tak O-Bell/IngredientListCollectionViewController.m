@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Tak O-Bell. All rights reserved.
 //
 
+#import "IngredientCollectionViewCell.h"
 #import "IngredientListCollectionViewController.h"
 
 @interface IngredientListCollectionViewController ()
