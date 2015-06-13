@@ -29,8 +29,15 @@
                         <action selector="takePictureButtonPressed:" destination="-1" eventType="touchUpInside" id="3eN-lJ-OVO"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rKd-Wj-MpT">
+                    <rect key="frame" x="8" y="512" width="64" height="58"/>
+                    <color key="backgroundColor" red="0.98823529409999999" green="0.68627450980000004" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S6K-U4-dQg">
+                    <rect key="frame" x="25" y="32" width="103" height="87"/>
+                    <color key="backgroundColor" red="0.1647058824" green="0.73333333329999995" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="z8Q-Cm-KGx" secondAttribute="bottom" constant="8" id="10O-Ha-PYa"/>
                 <constraint firstAttribute="centerX" secondItem="z8Q-Cm-KGx" secondAttribute="centerX" id="6Ys-c0-jd9"/>

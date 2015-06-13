@@ -22,6 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor clearColor]];
+        [self setModalPresentationStyle:UIModalPresentationFullScreen];
+    
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
     
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
@@ -34,19 +37,38 @@
          The user wants to use the camera interface. Set up our custom overlay view for the camera.
          */
         imagePickerController.showsCameraControls = NO;
+        // Device's screen size (ignoring rotation intentionally):
+        CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+        
+        // iOS is going to calculate a size which constrains the 4:3 aspect ratio
+        // to the screen size. We're basically mimicking that here to determine
+        // what size the system will likely display the image at on screen.
+        // NOTE: screenSize.width may seem odd in this calculation - but, remember,
+        // the devices only take 4:3 images when they are oriented *sideways*.
+        float cameraAspectRatio = 4.0 / 3.0;
+        float imageWidth = floorf(screenSize.width * cameraAspectRatio);
+        float imageHeight = floorf(screenSize.height * cameraAspectRatio);
+//        float scale = ceilf((screenSize.height / imageWidth) * 10.0) / 10.0;
+        float scale = screenSize.height / imageHeight;
+        imagePickerController.cameraViewTransform = CGAffineTransformMakeScale(scale, scale);
         
         /*
          Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view, and set self's reference to the view to nil.
          */
         [[NSBundle mainBundle] loadNibNamed:@"OverlayView" owner:self options:nil];
         self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
+        NSLog(@"frame is %f, %f, %f, %f", self.overlayView.frame.origin.x, self.overlayView.frame.origin.y, self.overlayView.frame.size.width, self.overlayView.frame.size.height);
         imagePickerController.cameraOverlayView = self.overlayView;
         self.overlayView = nil;
     }
     
     self.imagePickerController = imagePickerController;
-    [self presentViewController:self.imagePickerController animated:YES completion:nil];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
