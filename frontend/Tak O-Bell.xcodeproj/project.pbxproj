@@ -20,6 +20,7 @@
 		D39664101B2C084E008277FA /* Ingredient.m in Sources */ = {isa = PBXBuildFile; fileRef = D396640F1B2C084E008277FA /* Ingredient.m */; };
 		D39664131B2C1087008277FA /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39664121B2C1087008277FA /* CameraViewController.m */; };
 		D396641A1B2C24BC008277FA /* IngredientsList.m in Sources */ = {isa = PBXBuildFile; fileRef = D39664191B2C24BC008277FA /* IngredientsList.m */; };
+		D396641D1B2C2685008277FA /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D396641C1B2C2685008277FA /* OverlayView.xib */; };
 		E685742E208CAF802A70DD36 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EED24AB415C23A184987932A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		D39664121B2C1087008277FA /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		D39664181B2C24BC008277FA /* IngredientsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientsList.h; sourceTree = "<group>"; };
 		D39664191B2C24BC008277FA /* IngredientsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientsList.m; sourceTree = "<group>"; };
+		D396641C1B2C2685008277FA /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		EED24AB415C23A184987932A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 			children = (
 				CD4543471B2BFDB500A12DE1 /* Main.storyboard */,
 				CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */,
+				D396641C1B2C2685008277FA /* OverlayView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				TargetAttributes = {
 					D385014E1B2BF42E003606F9 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = SL5C245C4X;
 					};
 					D38501671B2BF42F003606F9 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -279,6 +283,7 @@
 			files = (
 				CD4543481B2BFDB500A12DE1 /* Main.storyboard in Resources */,
 				D38501631B2BF42F003606F9 /* LaunchScreen.xib in Resources */,
+				D396641D1B2C2685008277FA /* OverlayView.xib in Resources */,
 				CD4543501B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib in Resources */,
 				D38501601B2BF42F003606F9 /* Images.xcassets in Resources */,
 			);
@@ -408,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -446,7 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -459,7 +464,9 @@
 			baseConfigurationReference = 7A9503E2CF5309430434C309 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Tak O-Bell/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -470,7 +477,9 @@
 			baseConfigurationReference = 7486C577A711D449AC7E2250 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Tak O-Bell/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
