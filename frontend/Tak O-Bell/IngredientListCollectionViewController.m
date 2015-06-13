@@ -85,7 +85,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
     [list removeObjectAtIndex:indexPath.row];
     [self.ingredientsList.unwantedIngredients addObject:unwanted];
-    //[self.ingredientsList saveUnwantedIngredients];
+    [self.ingredientsList saveUnwantedIngredients];
     self.ingredientsList.allIngredients = list;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedAdded" object:self];
