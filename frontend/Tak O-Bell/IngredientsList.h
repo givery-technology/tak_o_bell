@@ -14,7 +14,7 @@ extern NSString * const kUnwantedIngredientsKey;
 @interface IngredientsList : NSObject
 
 @property (nonatomic, strong) NSMutableArray *allIngredients;
-@property (nonatomic, strong) NSMutableSet *unwantedIngredients;
+@property (nonatomic, strong) NSMutableArray *unwantedIngredients;
 
 - (BFTask *)getUnwatedIngredients;
 - (BFTask *)saveUnwantedIngredients;
