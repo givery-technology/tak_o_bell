@@ -44,12 +44,11 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAddedUnwanted) name:@"UnwantedAdded" object:nil];
-    //
-    //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    //    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    //
-    //    [self.collectionView setPagingEnabled:YES];
-    //    [self.collectionView setCollectionViewLayout:flowLayout];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [flowLayout setSectionInset:UIEdgeInsetsMake(20, 40, 20, 40)];
+    [self.collectionView setCollectionViewLayout:flowLayout];
 }
 
 
@@ -68,12 +67,20 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     IngredientCollectionViewCell *cell = (IngredientCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     Ingredient *ingredient =  self.ingredientsList.unwantedIngredients[indexPath.row];
     cell.ingredientName.text = ingredient.name;
+    //cell.frame = CGRectMake(20, 20, 100, 100);
     return cell;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(20, 20, 20, 20);
 }
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(100, 100);
+}
+
 
 #pragma mark <UICollectionViewDelegate>
 

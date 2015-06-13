@@ -23,6 +23,15 @@
 @implementation IngredientListCollectionViewController
 
 static NSString * const reuseIdentifier = @"IngredientCell";
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
