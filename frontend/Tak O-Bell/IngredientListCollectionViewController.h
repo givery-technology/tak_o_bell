@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IngredientsList.h"
 
 @interface IngredientListCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (nonatomic, strong) IngredientsList *ingredientsList;
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IngredientsList.h"
 
 @interface IngredientSelectionContainerViewController : UIViewController
+
+@property (nonatomic, strong) IngredientsList *ingredientsList;
 
 @end

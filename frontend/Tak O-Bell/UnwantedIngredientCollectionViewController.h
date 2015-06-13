@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IngredientsList.h"
 
 @interface UnwantedIngredientCollectionViewController : UICollectionViewController
+
+@property (nonatomic, strong) IngredientsList *ingredientsList;
 
 @end
