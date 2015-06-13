@@ -18,6 +18,7 @@
 		D385016F1B2BF42F003606F9 /* Tak_O_BellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D385016E1B2BF42F003606F9 /* Tak_O_BellTests.m */; };
 		D396640D1B2BF842008277FA /* TakoAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D396640C1B2BF842008277FA /* TakoAPIClient.m */; };
 		D39664101B2C084E008277FA /* Ingredient.m in Sources */ = {isa = PBXBuildFile; fileRef = D396640F1B2C084E008277FA /* Ingredient.m */; };
+		D39664131B2C1087008277FA /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39664121B2C1087008277FA /* CameraViewController.m */; };
 		E685742E208CAF802A70DD36 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EED24AB415C23A184987932A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		D396640C1B2BF842008277FA /* TakoAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakoAPIClient.m; sourceTree = "<group>"; };
 		D396640E1B2C084E008277FA /* Ingredient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ingredient.h; sourceTree = "<group>"; };
 		D396640F1B2C084E008277FA /* Ingredient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ingredient.m; sourceTree = "<group>"; };
+		D39664111B2C1087008277FA /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		D39664121B2C1087008277FA /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		EED24AB415C23A184987932A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,6 +103,8 @@
 				CD45434D1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m */,
 				CD4543491B2BFE8C00A12DE1 /* IngredientListCollectionViewController.h */,
 				CD45434A1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m */,
+				D39664111B2C1087008277FA /* CameraViewController.h */,
+				D39664121B2C1087008277FA /* CameraViewController.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				D39664101B2C084E008277FA /* Ingredient.m in Sources */,
 				CD45434F1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m in Sources */,
 				CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */,
+				D39664131B2C1087008277FA /* CameraViewController.m in Sources */,
 				D38501551B2BF42F003606F9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
