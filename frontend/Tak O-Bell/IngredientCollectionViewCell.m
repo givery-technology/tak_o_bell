@@ -10,15 +10,12 @@
 
 @interface IngredientCollectionViewCell()
 
-@property (weak, nonatomic) IBOutlet UIImageView *ingredientImage;
-
 @end
 
 
 @implementation IngredientCollectionViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -41,16 +38,5 @@
     return self;
 }
 
--(void)updateCell {
-    
-    NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Assets"];
-    NSString *filename = [NSString stringWithFormat:@"%@/%@", sourcePath, self.imageName];
-    
-    UIImage *image = [UIImage imageWithContentsOfFile:filename];
-    
-    [self.ingredientImage setImage:image];
-    [self.ingredientImage setContentMode:UIViewContentModeScaleAspectFit];
-    
-}
 
 @end

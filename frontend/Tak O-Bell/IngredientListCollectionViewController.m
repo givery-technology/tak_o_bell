@@ -6,10 +6,17 @@
 //  Copyright (c) 2015 Tak O-Bell. All rights reserved.
 //
 
+
+#import "Ingredient.h"
+#import "IngredientsList.h"
 #import "IngredientCollectionViewCell.h"
 #import "IngredientListCollectionViewController.h"
 
+
 @interface IngredientListCollectionViewController ()
+
+@property (nonatomic, strong) IngredientsList *ingredientsList;
+@property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
@@ -20,13 +27,10 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.ingredientsList = [[IngredientsList alloc] init];
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
+    UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
+    [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,35 +38,32 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)loadImages {
+    NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Assets"];
+    self.dataArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:NULL];
 }
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete method implementation -- Return the number of sections
-    return 0;
+    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete method implementation -- Return the number of items in the section
-    return 0;
+    return 5;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
-    
+    IngredientCollectionViewCell *cell = (IngredientCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    Ingredient *ingredient =  self.ingredientsList.allIngredients[indexPath.row];
+    cell.ingredientName.text = ingredient.name;
     return cell;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(20, 20, 20, 20);
 }
 
 #pragma mark <UICollectionViewDelegate>
