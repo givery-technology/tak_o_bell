@@ -72,6 +72,11 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 //
 //    [self.collectionView setPagingEnabled:YES];
 //    [self.collectionView setCollectionViewLayout:flowLayout];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [flowLayout setSectionInset:UIEdgeInsetsMake(20, 10, 20, 10)];
+    [self.collectionView setCollectionViewLayout:flowLayout];
 }
 
 - (void)setUpGestures {
@@ -143,8 +148,15 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(20, 10, 20, 10);
+    return UIEdgeInsetsMake(10, 10, 40, 10);
 }
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(90, 90);
+}
+
 
 #pragma  mark NSNotification
 
