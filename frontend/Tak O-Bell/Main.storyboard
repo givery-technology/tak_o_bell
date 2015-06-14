@@ -75,7 +75,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMX-1V-CBl">
-                                <rect key="frame" x="0.0" y="395" width="600" height="55"/>
+                                <rect key="frame" x="0.0" y="355" width="600" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unwanted Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-cx-Lut">
                                         <rect key="frame" x="15" y="17" width="570" height="21"/>
@@ -108,56 +108,102 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sr7-lY-onZ">
-                                <rect key="frame" x="10" y="455" width="580" height="140"/>
+                            <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5f0-Y5-IkF">
+                                <rect key="frame" x="20" y="430" width="560" height="150"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i31-KJ-pQE">
+                                        <rect key="frame" x="5" y="5" width="550" height="140"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="vwc-SL-bsQ"/>
+                                        </constraints>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.8282828283" green="0.8282828283" blue="0.8282828283" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="i31-KJ-pQE" firstAttribute="top" secondItem="5f0-Y5-IkF" secondAttribute="top" constant="5" id="b4V-pp-NV3"/>
+                                    <constraint firstAttribute="bottom" secondItem="i31-KJ-pQE" secondAttribute="bottom" constant="5" id="qCI-sh-BSb"/>
+                                    <constraint firstItem="i31-KJ-pQE" firstAttribute="leading" secondItem="5f0-Y5-IkF" secondAttribute="leading" constant="5" id="xe0-SD-0gz"/>
+                                    <constraint firstAttribute="trailing" secondItem="i31-KJ-pQE" secondAttribute="trailing" constant="5" id="yqG-Ds-Nli"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQn-Qs-aKJ">
+                                <rect key="frame" x="0.0" y="60" width="600" height="295"/>
+                                <connections>
+                                    <segue destination="izd-ME-Vdo" kind="embed" identifier="embedIngredientList" id="m6l-NZ-QTc"/>
+                                </connections>
+                            </containerView>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sr7-lY-onZ">
+                                <rect key="frame" x="20" y="430" width="560" height="150"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-Lt-0km">
-                                        <rect key="frame" x="0.0" y="0.0" width="580" height="140"/>
+                                        <rect key="frame" x="5" y="5" width="550" height="140"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="140" id="2EC-D8-VUG"/>
+                                            <constraint firstAttribute="height" constant="120" id="2EC-D8-VUG"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="2EC-D8-VUG"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <segue destination="Edp-Z9-kp4" kind="embed" identifier="embedUnwantedIngredientList" id="KrN-XA-3d4"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="8Qa-Lt-0km" secondAttribute="bottom" id="9iw-XQ-yjf"/>
-                                    <constraint firstItem="8Qa-Lt-0km" firstAttribute="leading" secondItem="sr7-lY-onZ" secondAttribute="leading" id="P4J-vq-pyy"/>
-                                    <constraint firstItem="8Qa-Lt-0km" firstAttribute="top" secondItem="sr7-lY-onZ" secondAttribute="top" id="SYl-Sm-bCl"/>
-                                    <constraint firstAttribute="trailing" secondItem="8Qa-Lt-0km" secondAttribute="trailing" id="nbW-3w-bjE"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Qa-Lt-0km" secondAttribute="bottom" constant="5" id="9iw-XQ-yjf"/>
+                                    <constraint firstItem="8Qa-Lt-0km" firstAttribute="leading" secondItem="sr7-lY-onZ" secondAttribute="leading" constant="5" id="P4J-vq-pyy"/>
+                                    <constraint firstItem="8Qa-Lt-0km" firstAttribute="top" secondItem="sr7-lY-onZ" secondAttribute="top" constant="5" id="SYl-Sm-bCl"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Qa-Lt-0km" secondAttribute="trailing" constant="5" id="nbW-3w-bjE"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQn-Qs-aKJ">
-                                <rect key="frame" x="0.0" y="60" width="600" height="335"/>
-                                <connections>
-                                    <segue destination="izd-ME-Vdo" kind="embed" identifier="embedIngredientList" id="m6l-NZ-QTc"/>
-                                </connections>
-                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="ZAO-4H-qt9" firstAttribute="top" secondItem="5f0-Y5-IkF" secondAttribute="bottom" constant="5" id="1HV-38-r0v"/>
                             <constraint firstItem="mQn-Qs-aKJ" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" id="3Z9-tK-loY"/>
-                            <constraint firstItem="sr7-lY-onZ" firstAttribute="top" secondItem="VMX-1V-CBl" secondAttribute="bottom" constant="5" id="3wG-At-F8O"/>
+                            <constraint firstItem="sr7-lY-onZ" firstAttribute="top" secondItem="VMX-1V-CBl" secondAttribute="bottom" constant="20" id="3wG-At-F8O"/>
+                            <constraint firstItem="5f0-Y5-IkF" firstAttribute="top" secondItem="VMX-1V-CBl" secondAttribute="bottom" constant="5" id="3zK-yN-5jc"/>
                             <constraint firstItem="VMX-1V-CBl" firstAttribute="top" secondItem="mQn-Qs-aKJ" secondAttribute="bottom" id="542-FX-WCg"/>
+                            <constraint firstItem="5f0-Y5-IkF" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" constant="10" id="88g-aM-U9B"/>
                             <constraint firstAttribute="trailing" secondItem="mQn-Qs-aKJ" secondAttribute="trailing" id="8jK-Lk-mXW"/>
                             <constraint firstItem="VMX-1V-CBl" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" id="94f-A7-Osr"/>
                             <constraint firstItem="IEc-pI-SbE" firstAttribute="top" secondItem="qhi-D5-GEe" secondAttribute="top" id="B9k-Pv-Cw3"/>
-                            <constraint firstAttribute="bottom" secondItem="sr7-lY-onZ" secondAttribute="bottom" constant="5" id="Fx8-lX-WnR"/>
+                            <constraint firstItem="sr7-lY-onZ" firstAttribute="width" secondItem="5f0-Y5-IkF" secondAttribute="width" id="FBN-U1-vpk"/>
+                            <constraint firstAttribute="bottom" secondItem="sr7-lY-onZ" secondAttribute="bottom" constant="20" id="Fx8-lX-WnR"/>
                             <constraint firstItem="mQn-Qs-aKJ" firstAttribute="top" secondItem="IEc-pI-SbE" secondAttribute="bottom" id="HQd-dY-pvw"/>
                             <constraint firstAttribute="trailing" secondItem="VMX-1V-CBl" secondAttribute="trailing" id="OZq-CP-Q7X"/>
                             <constraint firstAttribute="trailing" secondItem="IEc-pI-SbE" secondAttribute="trailing" id="VMW-F8-T0u"/>
-                            <constraint firstAttribute="trailing" secondItem="sr7-lY-onZ" secondAttribute="trailing" constant="10" id="ZGc-U2-cKq"/>
-                            <constraint firstItem="sr7-lY-onZ" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" constant="10" id="fJj-7L-NIc"/>
+                            <constraint firstAttribute="trailing" secondItem="sr7-lY-onZ" secondAttribute="trailing" constant="20" id="ZGc-U2-cKq"/>
+                            <constraint firstItem="sr7-lY-onZ" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" constant="20" id="fJj-7L-NIc"/>
+                            <constraint firstAttribute="trailing" secondItem="5f0-Y5-IkF" secondAttribute="trailing" constant="10" id="igc-rF-QMm"/>
+                            <constraint firstItem="sr7-lY-onZ" firstAttribute="centerX" secondItem="5f0-Y5-IkF" secondAttribute="centerX" id="jcM-iQ-pPy"/>
+                            <constraint firstItem="sr7-lY-onZ" firstAttribute="centerY" secondItem="5f0-Y5-IkF" secondAttribute="centerY" id="ksl-lf-YIb"/>
+                            <constraint firstItem="sr7-lY-onZ" firstAttribute="height" secondItem="5f0-Y5-IkF" secondAttribute="height" id="sKC-PJ-Y17"/>
                             <constraint firstItem="IEc-pI-SbE" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" id="x9k-Tc-bdV"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3zK-yN-5jc"/>
+                                <exclude reference="88g-aM-U9B"/>
+                                <exclude reference="igc-rF-QMm"/>
+                                <exclude reference="1HV-38-r0v"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="EZg-oR-eSX" appends="YES" id="pyx-uc-cBg"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="nextButton" destination="wsw-ly-qMr" id="8V8-wg-coW"/>
+                        <outlet property="unwantedBackground" destination="5f0-Y5-IkF" id="x9A-sc-JOa"/>
+                        <outlet property="unwantedContainer" destination="8Qa-Lt-0km" id="Ekc-yn-LWV"/>
+                        <outlet property="unwantedViewContainer" destination="sr7-lY-onZ" id="Q7e-jN-oEk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EW-uo-xHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="EZg-oR-eSX"/>
             </objects>
             <point key="canvasLocation" x="702" y="-143"/>
         </scene>
@@ -166,8 +212,9 @@
             <objects>
                 <collectionViewController id="Edp-Z9-kp4" customClass="UnwantedIngredientCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5pi-X3-SVD">
-                        <rect key="frame" x="0.0" y="0.0" width="580" height="140"/>
+                        <rect key="frame" x="0.0" y="0.0" width="550" height="140"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.8282828283" green="0.8282828283" blue="0.8282828283" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NZy-kz-sIV">
                             <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -190,7 +237,7 @@
             <objects>
                 <collectionViewController id="izd-ME-Vdo" customClass="IngredientListCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="MUp-1Y-MU6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="295"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pob-VR-3R5">
                             <size key="itemSize" width="100" height="100"/>

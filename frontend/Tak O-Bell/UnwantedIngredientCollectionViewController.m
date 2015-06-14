@@ -56,6 +56,13 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     [self.collectionView setCollectionViewLayout:flowLayout];
 }
 
+- (void)addIngredient:(Ingredient *)unwanted {
+    [self.ingredientsList.unwantedIngredients addObject:unwanted];
+    
+    [self.collectionView reloadData];
+}
+
+
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -77,7 +84,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(20, 20, 20, 20);
+    return UIEdgeInsetsMake(20, 5, 20, 5);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
