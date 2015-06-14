@@ -11,6 +11,7 @@
 		CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45434A1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m */; };
 		CD45434F1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45434D1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m */; };
 		CD4543501B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */; };
+		CD45435B1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45435A1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m */; };
 		D38501551B2BF42F003606F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501541B2BF42F003606F9 /* main.m */; };
 		D38501581B2BF42F003606F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501571B2BF42F003606F9 /* AppDelegate.m */; };
 		D38501601B2BF42F003606F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D385015F1B2BF42F003606F9 /* Images.xcassets */; };
@@ -21,6 +22,7 @@
 		D39664131B2C1087008277FA /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39664121B2C1087008277FA /* CameraViewController.m */; };
 		D396641A1B2C24BC008277FA /* IngredientsList.m in Sources */ = {isa = PBXBuildFile; fileRef = D39664191B2C24BC008277FA /* IngredientsList.m */; };
 		D396641D1B2C2685008277FA /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D396641C1B2C2685008277FA /* OverlayView.xib */; };
+		D3B0FB591B2C405E0048A363 /* IngredientSelectionContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B0FB581B2C405E0048A363 /* IngredientSelectionContainerViewController.m */; };
 		E685742E208CAF802A70DD36 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EED24AB415C23A184987932A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		CD45434C1B2C06FF00A12DE1 /* IngredientCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientCollectionViewCell.h; sourceTree = "<group>"; };
 		CD45434D1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientCollectionViewCell.m; sourceTree = "<group>"; };
 		CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IngredientCollectionViewCell.xib; sourceTree = "<group>"; };
+		CD4543591B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnwantedIngredientCollectionViewController.h; sourceTree = "<group>"; };
+		CD45435A1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnwantedIngredientCollectionViewController.m; sourceTree = "<group>"; };
 		D385014F1B2BF42F003606F9 /* Tak O-Bell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tak O-Bell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38501531B2BF42F003606F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38501541B2BF42F003606F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 		D39664181B2C24BC008277FA /* IngredientsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientsList.h; sourceTree = "<group>"; };
 		D39664191B2C24BC008277FA /* IngredientsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientsList.m; sourceTree = "<group>"; };
 		D396641C1B2C2685008277FA /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		D3B0FB571B2C405E0048A363 /* IngredientSelectionContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientSelectionContainerViewController.h; sourceTree = "<group>"; };
+		D3B0FB581B2C405E0048A363 /* IngredientSelectionContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientSelectionContainerViewController.m; sourceTree = "<group>"; };
 		EED24AB415C23A184987932A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,12 +110,16 @@
 		CD4543431B2BFD3900A12DE1 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D3B0FB571B2C405E0048A363 /* IngredientSelectionContainerViewController.h */,
+				D3B0FB581B2C405E0048A363 /* IngredientSelectionContainerViewController.m */,
 				CD45434C1B2C06FF00A12DE1 /* IngredientCollectionViewCell.h */,
 				CD45434D1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m */,
 				CD4543491B2BFE8C00A12DE1 /* IngredientListCollectionViewController.h */,
 				CD45434A1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m */,
 				D39664111B2C1087008277FA /* CameraViewController.h */,
 				D39664121B2C1087008277FA /* CameraViewController.m */,
+				CD4543591B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.h */,
+				CD45435A1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -340,10 +350,12 @@
 				D396640D1B2BF842008277FA /* TakoAPIClient.m in Sources */,
 				D39664101B2C084E008277FA /* Ingredient.m in Sources */,
 				CD45434F1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m in Sources */,
+				D3B0FB591B2C405E0048A363 /* IngredientSelectionContainerViewController.m in Sources */,
 				D396641A1B2C24BC008277FA /* IngredientsList.m in Sources */,
 				CD45434B1B2BFE8C00A12DE1 /* IngredientListCollectionViewController.m in Sources */,
 				D39664131B2C1087008277FA /* CameraViewController.m in Sources */,
 				D38501551B2BF42F003606F9 /* main.m in Sources */,
+				CD45435B1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
