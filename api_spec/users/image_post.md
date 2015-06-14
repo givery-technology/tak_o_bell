@@ -2,10 +2,10 @@
 ## Request
 * ~~token: string~~
 * image: file
+* restaurant_id: int -> this is from major value of iBeacon(pretending to use in this time)
 * dislikes: [string]
 
 ## Expected responce
 * code: int
 * message: string
-* removed_items: [string]
 * renewed_image: string
