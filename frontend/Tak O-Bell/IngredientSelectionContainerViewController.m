@@ -185,6 +185,7 @@
 
 - (IBAction)didTapNext:(id)sender {
     CameraViewController *cameraViewController = [[CameraViewController alloc] init];
+    cameraViewController.unwantedIngredientList = self.ingredientsList.unwantedIngredients;
     [self presentViewController:cameraViewController animated:NO completion:nil];
 //    [self.navigationController pushViewController:cameraViewController animated:YES];
 }
