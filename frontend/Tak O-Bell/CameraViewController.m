@@ -14,6 +14,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *takePictureButton;
 @property (nonatomic, weak) IBOutlet UIButton *returnToPreferencesButton;
 @property (nonatomic) UIImagePickerController *imagePickerController;
+@property BOOL isExiting;
 
 @end
 
@@ -22,8 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.isExiting = NO;
     [self.view setBackgroundColor:[UIColor clearColor]];
-        [self setModalPresentationStyle:UIModalPresentationFullScreen];
+//        [self setModalPresentationStyle:UIModalPresentationFullScreen];
     
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
     
@@ -73,7 +75,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self presentViewController:self.imagePickerController animated:YES completion:nil];
+
+    if (self.isExiting) { // lol
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self presentViewController:self.imagePickerController animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,6 +99,12 @@
 */
 - (IBAction)takePictureButtonPressed:(id)sender {
     [self.imagePickerController takePicture];
+}
+
+- (IBAction)returnToPreferencesButtonPressed:(id)sender {
+//    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    self.isExiting = YES;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
