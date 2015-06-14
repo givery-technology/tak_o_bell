@@ -11,7 +11,10 @@
 #import "UnwantedIngredientCollectionViewController.h"
 #import "IngredientSelectionContainerViewController.h"
 
-@interface UnwantedIngredientCollectionViewController ()
+@interface UnwantedIngredientCollectionViewController () {
+    NSMutableArray *ingredientList;
+    Ingredient *ingredient;
+}
 
 @property (nonatomic, strong) NSArray *dataArray;
 
@@ -25,11 +28,13 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     NSLog(@"vdl2");
     [super viewDidLoad];
     [self setupCollectionView];
+    [self setUpGestures];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.ingredientsList = [(IngredientSelectionContainerViewController *)self.parentViewController ingredientsList];
+    ingredientList = self.ingredientsList.unwantedIngredients;
     [self.collectionView reloadData];
 }
 - (void)didReceiveMemoryWarning {
@@ -79,6 +84,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     IngredientCollectionViewCell *cell = (IngredientCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     Ingredient *ingredient =  self.ingredientsList.unwantedIngredients[indexPath.row];
     cell.ingredientName.text = ingredient.name;
+    cell.ingredientImage.image = ingredient.image;
     //cell.frame = CGRectMake(20, 20, 100, 100);
     return cell;
 }
@@ -90,54 +96,73 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(100, 100);
+    return CGSizeMake(90, 90);
 }
 
 
-#pragma mark <UICollectionViewDelegate>
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    Ingredient *unwanted = self.ingredientsList.unwantedIngredients[indexPath.row];
-    [self.ingredientsList.unwantedIngredients removeObjectAtIndex:indexPath.row];
-    [self.ingredientsList.allIngredients addObject:unwanted];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedRemoved" object:self];
-    [self.collectionView reloadData];
-}
-
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
+//#pragma mark <UICollectionViewDelegate>
+//
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    Ingredient *unwanted = self.ingredientsList.unwantedIngredients[indexPath.row];
+//    [self.ingredientsList.unwantedIngredients removeObjectAtIndex:indexPath.row];
+//    [self.ingredientsList.allIngredients addObject:unwanted];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedRemoved" object:self];
+//    [self.collectionView reloadData];
+//}
 
 #pragma mark NSNotication
 
 - (void)userAddedUnwanted {
     [self.collectionView reloadData];
+}
+
+- (void)setUpGestures {
+    
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                                   action:@selector(handlePress:)];
+    longPressGesture.numberOfTouchesRequired = 1;
+    longPressGesture.minimumPressDuration    = 0.1f;
+    [self.collectionView addGestureRecognizer:longPressGesture];
+}
+
+
+- (void)cellDragCompleteWithModelForUnwanted:(Ingredient *)unwanted withValidDropPoint:(BOOL)validDropPoint {
+    if (unwanted != nil) {
+        // get indexPath for the model
+        NSUInteger index = [ingredientList indexOfObject:unwanted];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+        ingredientList = self.ingredientsList.unwantedIngredients;
+        if (validDropPoint && indexPath != nil) {
+            [ingredientList removeObjectAtIndex:index];
+            [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            
+            [self.collectionView reloadData];
+        } else {
+            
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+            cell.alpha = 1.0f;
+        }
+    }
+}
+
+#pragma mark - Gesture Recognizer
+- (void)handlePress:(UILongPressGestureRecognizer *)gesture {
+    CGPoint point = [gesture locationInView:self.collectionView];
+    
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+        if (indexPath != nil) {
+            ingredient = [ingredientList objectAtIndex:indexPath.item];
+            
+            // calculate point in parent view
+            point = [gesture locationInView:self.parent.view];
+            
+            [self.parent setSelectedIngredient:ingredient atPoint:point];
+            
+            // hide the cell
+            [self.collectionView cellForItemAtIndexPath:indexPath].alpha = 0.0f;
+        }
+    }
 }
 
 @end

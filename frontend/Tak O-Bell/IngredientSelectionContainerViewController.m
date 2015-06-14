@@ -45,6 +45,8 @@
     [[self.unwantedBackground layer] setCornerRadius:10];
     self.unwantedIngredientListViewController.collectionView.backgroundColor = [UIColor clearColor];
     self.unwantedIngredientListViewController.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.ingredientListViewController.collectionView.backgroundColor = [UIColor clearColor];
+    self.ingredientListViewController.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     
     UIPanGestureRecognizer *panGesture =
     [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
@@ -56,19 +58,16 @@
     self.tempCell.hidden = YES;
     self.tempCell.backgroundColor = [UIColor whiteColor];
     
-    cell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    cell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
     cell.hidden = YES;
-    UIImageView *ingredientImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,100,100)];
-    UILabel *ingredientName = [[UILabel alloc] init];
-    ingredientName.frame = CGRectMake(0, 0, 96, 17);
-    cell.backgroundColor = [UIColor whiteColor];
-    [[cell layer] setCornerRadius:50];
+    UIImageView *ingredientImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,90,90)];
+ 
+    cell.backgroundColor = [UIColor clearColor];
+    [[cell layer] setCornerRadius:45];
     
     [cell addSubview:ingredientImage];
-    [cell addSubview:ingredientName];
     
-    NSDictionary *viewsDictionary = @{@"ingredientName":ingredientName,
-                                      @"ingredientImage":ingredientImage};
+    NSDictionary *viewsDictionary = @{@"ingredientImage":ingredientImage};
     NSArray *constraintY = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[ingredientImage]-|"
                                                                    options:0
                                                                    metrics:nil
@@ -77,22 +76,9 @@
                                                                    options:0
                                                                    metrics:nil
                                                                      views:viewsDictionary];
-    NSArray *constraintY2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-73-[ingredientName]-10-|"
-                                                                   options:0
-                                                                   metrics:nil
-                                                                     views:viewsDictionary];
-    NSArray *constraintX2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-2-[ingredientName]-2-|"
-                                                                   options:0
-                                                                   metrics:nil
-                                                                     views:viewsDictionary];
 
-
-    
     [cell addConstraints:constraintY];
     [cell addConstraints:constraintX];
-    [cell addConstraints:constraintY2];
-    [cell addConstraints:constraintX2];
-    
     
     [self.view addSubview:cell];
 }
@@ -107,15 +93,16 @@
     
     if (ingredient != nil) {
         for (NSObject *v in [cell subviews]) {
-            if ([v isKindOfClass:[UILabel class]]){
-                UILabel *label = (UILabel *)v;
-                label.text = ingredient.name;
+            if ([v isKindOfClass:[UIImageView class]]) {
+                UIImageView *image = (UIImageView *)v;
+                image.image = ingredient.image;
             }
         }
         cell.center = point;
 
         
         [self updateCellViewDragState:[self isValidDragPoint:point]];
+        [self updateCellViewDragState:[self isValidRemoveDragPoint:point]];
         cell.hidden = NO;
     } else {
         cell.hidden = YES;
@@ -124,7 +111,13 @@
 
 #pragma mark - Validation helper methods on drag and drop
 - (BOOL)isValidDragPoint:(CGPoint)point {
-    return !CGRectContainsPoint(self.ingredientListViewController.collectionView.frame, point);
+    return !CGRectContainsPoint(CGRectMake(0, 0, self.view.frame.size.width, 371), point);
+}
+
+- (BOOL)isValidRemoveDragPoint:(CGPoint)point {
+    CGRect rect = self.ingredientListViewController.view.frame;
+    
+    return !CGRectContainsPoint(CGRectMake(0,371, self.view.frame.size.width, 171), point);
 }
 
 - (void)updateCellViewDragState:(BOOL)validDropPoint {
@@ -155,9 +148,18 @@
         cell.hidden = YES;
         
         BOOL validDropPoint = [self isValidDragPoint:touchPoint];
-        [self.ingredientListViewController cellDragCompleteWithModel:ingredient withValidDropPoint:validDropPoint];
+        BOOL validRemovePoint = [self isValidRemoveDragPoint:touchPoint];
         if (validDropPoint) {
+            [self.ingredientListViewController cellDragCompleteWithModel:ingredient withValidDropPoint:validDropPoint];
+        }
+        if (!validDropPoint) {
+
+            [self.unwantedIngredientListViewController cellDragCompleteWithModelForUnwanted:ingredient withValidDropPoint:validRemovePoint];
+        }
+        if (validDropPoint && validRemovePoint) {
             [self.unwantedIngredientListViewController addIngredient:ingredient];
+        } else if (validRemovePoint) {
+            [self.ingredientListViewController addIngredient:ingredient];
         }
         ingredient = nil;
     }
@@ -176,6 +178,7 @@
         NSLog(@"woof");
         self.unwantedIngredientListViewController = (UnwantedIngredientCollectionViewController *)segue.destinationViewController;
         self.unwantedIngredientListViewController.ingredientsList = self.ingredientsList;
+        self.unwantedIngredientListViewController.parent = self;
     }
 }
 

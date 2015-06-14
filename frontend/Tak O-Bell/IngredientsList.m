@@ -17,20 +17,15 @@ NSString * const kUnwantedIngredientsKey = @"UnwantedIngredients";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _allIngredients = [NSMutableArray arrayWithArray:@[[Ingredient ingredientWithName:@"Fish" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Peanuts" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Pork" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Caffeine" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Gluten" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Dog" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Cat" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Frog" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Human" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Monkey" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Wheat" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Water" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Onions" image:[UIImage imageNamed:@""]],
-                                                           [Ingredient ingredientWithName:@"Bananas" image:[UIImage imageNamed:@""]]]];
+        _allIngredients = [NSMutableArray arrayWithArray:@[[Ingredient ingredientWithName:@"Chicken" image:[UIImage imageNamed:@"chicken"]],
+                                                           [Ingredient ingredientWithName:@"Beef" image:[UIImage imageNamed:@"beef"]],
+                                                           [Ingredient ingredientWithName:@"Pork" image:[UIImage imageNamed:@"pork"]],
+                                                           [Ingredient ingredientWithName:@"Egg" image:[UIImage imageNamed:@"egg"]],
+                                                           [Ingredient ingredientWithName:@"Wheat" image:[UIImage imageNamed:@"wheat"]],
+                                                           [Ingredient ingredientWithName:@"Mushroom" image:[UIImage imageNamed:@"mushroom"]],
+                                                           [Ingredient ingredientWithName:@"Tomato" image:[UIImage imageNamed:@"tomato"]],
+                                                           [Ingredient ingredientWithName:@"Soba" image:[UIImage imageNamed:@"soba"]],
+                                                           [Ingredient ingredientWithName:@"Milk" image:[UIImage imageNamed:@"milk"]]]];
         _unwantedIngredients = [[NSMutableArray alloc] init];
     }
     return self;

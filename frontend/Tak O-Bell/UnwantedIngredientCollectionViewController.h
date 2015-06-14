@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "IngredientsList.h"
+#import "IngredientSelectionContainerViewController.h"
 
 @interface UnwantedIngredientCollectionViewController : UICollectionViewController
 
 
 - (void)addIngredient:(Ingredient *)unwanted;
 @property (nonatomic, strong) IngredientsList *ingredientsList;
-
+@property (nonatomic, strong) IngredientSelectionContainerViewController *parent;
+- (void)cellDragCompleteWithModelForUnwanted:(Ingredient *)unwanted withValidDropPoint:(BOOL)validDropPoint;
 @end

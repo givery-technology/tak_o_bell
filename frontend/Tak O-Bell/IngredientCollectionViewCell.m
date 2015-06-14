@@ -16,7 +16,7 @@
 @implementation IngredientCollectionViewCell
 
 - (void)awakeFromNib {
-    [self.layer setCornerRadius:50];
+    [self.layer setCornerRadius:45];
 }
 
 - (id)initWithFrame:(CGRect)frame {
