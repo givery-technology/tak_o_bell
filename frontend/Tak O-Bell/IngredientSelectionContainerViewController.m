@@ -51,12 +51,50 @@
     panGesture.delegate = self;
     [self.view addGestureRecognizer:panGesture];
     
-    cell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120, 140)];
+    self.tempCell.frame = CGRectMake(0, 0, 0, 0);
+    [[self.tempCell layer] setCornerRadius:50];
+    self.tempCell.hidden = YES;
+    self.tempCell.backgroundColor = [UIColor whiteColor];
+    
+    cell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     cell.hidden = YES;
+    UIImageView *ingredientImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,100,100)];
+    UILabel *ingredientName = [[UILabel alloc] init];
+    ingredientName.frame = CGRectMake(0, 0, 96, 17);
     cell.backgroundColor = [UIColor whiteColor];
+    [[cell layer] setCornerRadius:50];
+    
+    [cell addSubview:ingredientImage];
+    [cell addSubview:ingredientName];
+    
+    NSDictionary *viewsDictionary = @{@"ingredientName":ingredientName,
+                                      @"ingredientImage":ingredientImage};
+    NSArray *constraintY = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[ingredientImage]-|"
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+    NSArray *constraintX = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[ingredientImage]-|"
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+    NSArray *constraintY2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-73-[ingredientName]-10-|"
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+    NSArray *constraintX2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-2-[ingredientName]-2-|"
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+
+
+    
+    [cell addConstraints:constraintY];
+    [cell addConstraints:constraintX];
+    [cell addConstraints:constraintY2];
+    [cell addConstraints:constraintX2];
+    
     
     [self.view addSubview:cell];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,11 +106,17 @@
     ingredient = unwanted;
     
     if (ingredient != nil) {
-        //cell.ingredientName.text = [NSString stringWithFormat:@"%@", ingredient.name];
+        for (NSObject *v in [cell subviews]) {
+            if ([v isKindOfClass:[UILabel class]]){
+                UILabel *label = (UILabel *)v;
+                label.text = ingredient.name;
+            }
+        }
         cell.center = point;
-        cell.hidden = NO;
+
         
         [self updateCellViewDragState:[self isValidDragPoint:point]];
+        cell.hidden = NO;
     } else {
         cell.hidden = YES;
     }
@@ -91,12 +135,12 @@
     }
 }
 
-- (void)initDraggedCardView {
-    cell = [[IngredientCollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 120, 140)];
-    cell.hidden = YES;
-    //cell.highlighted = YES;
-    [self.view addSubview:cell];
-}
+//- (void)initDraggedCardView {
+//    cell = [[IngredientCollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 120, 140)];
+//    cell.hidden = YES;
+//    //cell.highlighted = YES;
+//    [self.view addSubview:cell];
+//}
 
 
 #pragma mark - Pan Gesture Recognizers/delegate
@@ -120,8 +164,6 @@
 }
 #pragma mark - Navigation
 
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *segueName = segue.identifier;
     
