@@ -1,9 +1,14 @@
 **/xcuserdata/**
 *.xcuserstate
 
+*.sw*
 backend/dev
 backend/out
 backend/out.jpg
 backend/gmon.out
 backend/*.o
-backend/.*.sw*
+backend/.cabal-sandbox/
+backend/cabal.sandbox.config
+backend/bin/*
+backend/build/*
+backend/dist/*

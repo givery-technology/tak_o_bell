@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "IngredientsList.h"
+#import "Ingredient.h"
 
 @interface IngredientSelectionContainerViewController : UIViewController
 
 @property (nonatomic, strong) IngredientsList *ingredientsList;
 
+- (void)setSelectedIngredient:(Ingredient *)unwanted atPoint:(CGPoint)point;
 @end

@@ -13,13 +13,17 @@
 #import "IngredientSelectionContainerViewController.h"
 #import "CameraViewController.h"
 
-@interface IngredientListCollectionViewController ()
+@interface IngredientListCollectionViewController () {
+    NSMutableArray *ingredientList;
+    Ingredient *ingredient;
+}
 
 @property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
 @implementation IngredientListCollectionViewController
+
 
 static NSString * const reuseIdentifier = @"IngredientCell";
 - (void)viewWillAppear:(BOOL)animated
@@ -33,14 +37,17 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 }
 
 - (void)viewDidLoad {
-    NSLog(@"vdl1");
     [super viewDidLoad];
+    [self setUpGestures];
     [self setupCollectionView];
+    [self setupIngredients];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.ingredientsList = [(IngredientSelectionContainerViewController *)self.parentViewController ingredientsList];
+    ingredientList = [NSMutableArray array];
+    ingredientList = self.ingredientsList.allIngredients;
     [self.collectionView reloadData];
 }
 
@@ -52,6 +59,11 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 -(void)loadImages {
     NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Assets"];
     self.dataArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:NULL];
+}
+
+- (void)setupIngredients {
+
+    
 }
 
 -(void)setupCollectionView {
@@ -68,6 +80,53 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 //    [self.collectionView setCollectionViewLayout:flowLayout];
 }
 
+- (void)setUpGestures {
+    
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                                   action:@selector(handlePress:)];
+    longPressGesture.numberOfTouchesRequired = 1;
+    longPressGesture.minimumPressDuration    = 0.1f;
+    [self.collectionView addGestureRecognizer:longPressGesture];
+}
+
+
+- (void)cellDragCompleteWithModel:(Ingredient *)unwanted withValidDropPoint:(BOOL)validDropPoint {
+    if (unwanted != nil) {
+        // get indexPath for the model
+        NSUInteger index = [ingredientList indexOfObject:unwanted];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+        ingredientList = self.ingredientsList.allIngredients;
+        if (validDropPoint && indexPath != nil) {
+            [ingredientList removeObjectAtIndex:index];
+            [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            
+            [self.collectionView reloadData];
+        } else {
+            
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+            cell.alpha = 1.0f;
+        }
+    }
+}
+#pragma mark - Gesture Recognizer
+- (void)handlePress:(UILongPressGestureRecognizer *)gesture {
+    CGPoint point = [gesture locationInView:self.collectionView];
+    
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+        if (indexPath != nil) {
+            ingredient = [ingredientList objectAtIndex:indexPath.item];
+            
+            // calculate point in parent view
+            point = [gesture locationInView:self.parent.view];
+            
+            [self.parent setSelectedIngredient:ingredient atPoint:point];
+            
+            // hide the cell
+            [self.collectionView cellForItemAtIndexPath:indexPath].alpha = 0.0f;
+        }
+    }
+}
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -94,14 +153,14 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 
 #pragma mark <UICollectionViewDelegate>
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
-    [self.ingredientsList.allIngredients removeObjectAtIndex:indexPath.row];
-    [self.ingredientsList.unwantedIngredients addObject:unwanted];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedAdded" object:self];
-    [self.collectionView reloadData];
-
-}
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
+//    [self.ingredientsList.allIngredients removeObjectAtIndex:indexPath.row];
+//    [self.ingredientsList.unwantedIngredients addObject:unwanted];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedAdded" object:self];
+//    [self.collectionView reloadData];
+//
+//}
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking

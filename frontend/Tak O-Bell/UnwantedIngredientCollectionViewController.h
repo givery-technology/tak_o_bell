@@ -11,6 +11,8 @@
 
 @interface UnwantedIngredientCollectionViewController : UICollectionViewController
 
+
+- (void)addIngredient:(Ingredient *)unwanted;
 @property (nonatomic, strong) IngredientsList *ingredientsList;
 
 @end
