@@ -26,7 +26,6 @@ NSString * const kUnwantedIngredientsKey = @"UnwantedIngredients";
                                                            [Ingredient ingredientWithName:@"Tomato" image:[UIImage imageNamed:@"tomato"]],
                                                            [Ingredient ingredientWithName:@"Soba" image:[UIImage imageNamed:@"soba"]],
                                                            [Ingredient ingredientWithName:@"Peach" image:[UIImage imageNamed:@"peach"]],
-                                                           [Ingredient ingredientWithName:@"Beans" image:[UIImage imageNamed:@"beans"]],
                                                            [Ingredient ingredientWithName:@"Ikura" image:[UIImage imageNamed:@"ikura"]],
                                                            [Ingredient ingredientWithName:@"Piman" image:[UIImage imageNamed:@"piman"]],
                                                            [Ingredient ingredientWithName:@"Milk" image:[UIImage imageNamed:@"milk"]]]];
