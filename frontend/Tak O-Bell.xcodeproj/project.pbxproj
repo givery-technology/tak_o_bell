@@ -12,6 +12,7 @@
 		CD45434F1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45434D1B2C06FF00A12DE1 /* IngredientCollectionViewCell.m */; };
 		CD4543501B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */; };
 		CD45435B1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45435A1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m */; };
+		CD45435E1B2D13A400A12DE1 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD45435D1B2D13A400A12DE1 /* View.xib */; };
 		D38501551B2BF42F003606F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501541B2BF42F003606F9 /* main.m */; };
 		D38501581B2BF42F003606F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501571B2BF42F003606F9 /* AppDelegate.m */; };
 		D38501601B2BF42F003606F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D385015F1B2BF42F003606F9 /* Images.xcassets */; };
@@ -47,6 +48,7 @@
 		CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IngredientCollectionViewCell.xib; sourceTree = "<group>"; };
 		CD4543591B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnwantedIngredientCollectionViewController.h; sourceTree = "<group>"; };
 		CD45435A1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnwantedIngredientCollectionViewController.m; sourceTree = "<group>"; };
+		CD45435D1B2D13A400A12DE1 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		D385014F1B2BF42F003606F9 /* Tak O-Bell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tak O-Bell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38501531B2BF42F003606F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38501541B2BF42F003606F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				CD4543471B2BFDB500A12DE1 /* Main.storyboard */,
 				CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */,
 				D396641C1B2C2685008277FA /* OverlayView.xib */,
+				CD45435D1B2D13A400A12DE1 /* View.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				D38501631B2BF42F003606F9 /* LaunchScreen.xib in Resources */,
 				D396641D1B2C2685008277FA /* OverlayView.xib in Resources */,
 				CD4543501B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib in Resources */,
+				CD45435E1B2D13A400A12DE1 /* View.xib in Resources */,
 				D38501601B2BF42F003606F9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
