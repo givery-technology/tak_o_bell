@@ -145,7 +145,8 @@
 
 - (IBAction)didTapNext:(id)sender {
     CameraViewController *cameraViewController = [[CameraViewController alloc] init];
-    [self.navigationController pushViewController:cameraViewController animated:YES];
+    [self presentViewController:cameraViewController animated:NO completion:nil];
+//    [self.navigationController pushViewController:cameraViewController animated:YES];
 }
 
 
