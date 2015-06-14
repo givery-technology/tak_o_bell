@@ -11,6 +11,7 @@
 #import "IngredientCollectionViewCell.h"
 #import "IngredientListCollectionViewController.h"
 #import "IngredientSelectionContainerViewController.h"
+#import "CameraViewController.h"
 
 @interface IngredientListCollectionViewController () {
     NSMutableArray *ingredientList;
