@@ -14,7 +14,7 @@
     static TakoAPIClient *sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedClient = [[TakoAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
+        sharedClient = [[TakoAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://121.94.171.205"]];
     });
     return sharedClient;
 }
@@ -22,7 +22,7 @@
 - (instancetype)initWithBaseURL:(NSURL *)url {
     self = [super initWithBaseURL:url];
     if (self) {
-        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.responseSerializer = [AFImageResponseSerializer serializer];
     }
     return self;
 }
@@ -31,11 +31,13 @@
     NSData *menuImageData = [NSData dataWithData:UIImageJPEGRepresentation(menuImage, 1.0f)];
     NSDictionary *parameters = @{@"dislikes": [dietaryPreferences allValues]};
     BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
-    [self POST:@"/api/users/image" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [self POST:@"/test" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:menuImageData name:@"image" fileName:@"image.jpg" mimeType:@"image/jpeg"];
     } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
         [t setResult:responseObject];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
         [t setError:error];
     }];
     return t.task;
