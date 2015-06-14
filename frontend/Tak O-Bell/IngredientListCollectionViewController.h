@@ -11,7 +11,7 @@
 #import "IngredientSelectionContainerViewController.h"
 
 @interface IngredientListCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-
+- (void)addIngredient:(Ingredient *)unwanted;
 @property (nonatomic, strong) IngredientsList *ingredientsList;
 @property (nonatomic, strong) IngredientSelectionContainerViewController *parent;
 - (void)cellDragCompleteWithModel:(Ingredient *)unwanted withValidDropPoint:(BOOL)validDropPoint;

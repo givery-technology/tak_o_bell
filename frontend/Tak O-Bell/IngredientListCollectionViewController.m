@@ -40,7 +40,6 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     [super viewDidLoad];
     [self setUpGestures];
     [self setupCollectionView];
-    [self setupIngredients];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -59,11 +58,6 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 -(void)loadImages {
     NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Assets"];
     self.dataArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:NULL];
-}
-
-- (void)setupIngredients {
-
-    
 }
 
 -(void)setupCollectionView {
@@ -144,6 +138,7 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     IngredientCollectionViewCell *cell = (IngredientCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     Ingredient *ingredient =  self.ingredientsList.allIngredients[indexPath.row];
     cell.ingredientName.text = ingredient.name;
+    cell.ingredientImage.image = ingredient.image;
     return cell;
 }
 
@@ -151,49 +146,15 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     return UIEdgeInsetsMake(20, 20, 20, 20);
 }
 
-#pragma mark <UICollectionViewDelegate>
-
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
-//    [self.ingredientsList.allIngredients removeObjectAtIndex:indexPath.row];
-//    [self.ingredientsList.unwantedIngredients addObject:unwanted];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedAdded" object:self];
-//    [self.collectionView reloadData];
-//
-//}
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
-
 #pragma  mark NSNotification
 
 - (void)userRemoveUnwanted {
+    [self.collectionView reloadData];
+}
+
+- (void)addIngredient:(Ingredient *)unwanted {
+    [self.ingredientsList.allIngredients addObject:unwanted];
+    
     [self.collectionView reloadData];
 }
 
