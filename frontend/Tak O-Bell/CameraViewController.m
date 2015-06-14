@@ -107,12 +107,15 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    UIImage *resizedImage = [self imageWithImage:image convertToSize:CGSizeMake(image.size.width/3, image.size.height/3)];
+    NSLog(@"Image dimensions are %f x %f", resizedImage.size.width, resizedImage.size.height);
     [[[TakoAPIClient sharedClient] getRestrictedVersionOfMenu:image dietaryPreferences:@{@"moo":@"moo"}] continueWithBlock:^id(BFTask *task) {
         if (task.error) {
-                    NSLog(@"Result is %@", task.error);
+            NSLog(@"Result is %@", task.error);
             return nil;
         }
-                NSLog(@"Result is %@", task.result);
+        
+        NSLog(@"Result is %@", task.result);
         UIImage *restrictedMenuImage = task.result;
         self.showImagePicker = NO;
         [self dismissViewControllerAnimated:YES completion:^{
@@ -123,13 +126,14 @@
         }];
         return nil;
     }];
-//    self.showImagePicker = NO;
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        RestrictedMenuViewController *restrictedMenuViewController = [[RestrictedMenuViewController alloc] initWithNibName:@"RestrictedMenuView" bundle:nil];
-//        [self presentViewController:restrictedMenuViewController animated:YES completion:^{
-//                restrictedMenuViewController.restrictedMenuImageView.image = image;
-//        }];
-//    }];
 }
 
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
+}
 @end
