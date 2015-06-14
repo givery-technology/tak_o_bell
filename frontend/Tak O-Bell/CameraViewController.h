@@ -10,4 +10,6 @@
 
 @interface CameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
+@property (nonatomic, strong) NSMutableArray *unwantedIngredientList;
+
 @end

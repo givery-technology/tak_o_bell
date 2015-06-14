@@ -109,7 +109,12 @@
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     UIImage *resizedImage = [self imageWithImage:image convertToSize:CGSizeMake(image.size.width/3, image.size.height/3)];
     NSLog(@"Image dimensions are %f x %f", resizedImage.size.width, resizedImage.size.height);
+    NSLog(@"Our dietary preferences: %@", self.unwantedIngredientList);
+//    UIAlertController *uploadingImageController = [UIAlertController alertControllerWithTitle:@"orz" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
     [[[TakoAPIClient sharedClient] getRestrictedVersionOfMenu:image dietaryPreferences:@{@"moo":@"moo"}] continueWithBlock:^id(BFTask *task) {
+//        [uploadingImageController dismissViewControllerAnimated:YES completion:nil];
+        
         if (task.error) {
             NSLog(@"Result is %@", task.error);
             return nil;
@@ -122,6 +127,7 @@
             RestrictedMenuViewController *restrictedMenuViewController = [[RestrictedMenuViewController alloc] initWithNibName:@"RestrictedMenuView" bundle:nil];
             [self presentViewController:restrictedMenuViewController animated:YES completion:^{
                 restrictedMenuViewController.restrictedMenuImageView.image = restrictedMenuImage;
+                self.showImagePicker = YES;
             }];
         }];
         return nil;

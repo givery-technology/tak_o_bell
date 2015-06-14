@@ -18,9 +18,24 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OQ8-YX-phk">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghl-1l-Lhe">
+                    <rect key="frame" x="8" y="30" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="rJQ-gl-kVp"/>
+                        <constraint firstAttribute="height" constant="32" id="zm5-xB-8z2"/>
+                    </constraints>
+                    <state key="normal" image="IconList">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="returnButtonPressed:" destination="-1" eventType="touchUpInside" id="JOW-7g-7Ef"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="ghl-1l-Lhe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="4je-VK-zZR"/>
+                <constraint firstItem="ghl-1l-Lhe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="80c-p2-CJm"/>
                 <constraint firstAttribute="trailing" secondItem="OQ8-YX-phk" secondAttribute="trailing" id="Gq6-n3-xb0"/>
                 <constraint firstItem="OQ8-YX-phk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ehG-rj-PrA"/>
                 <constraint firstItem="OQ8-YX-phk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f47-F8-eDR"/>
@@ -29,4 +44,7 @@
             <point key="canvasLocation" x="303" y="359"/>
         </view>
     </objects>
+    <resources>
+        <image name="IconList" width="32" height="32"/>
+    </resources>
 </document>
