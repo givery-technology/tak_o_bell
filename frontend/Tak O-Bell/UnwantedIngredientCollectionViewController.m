@@ -7,26 +7,31 @@
 //
 
 #import "Ingredient.h"
-#import "IngredientsList.h"
 #import "IngredientCollectionViewCell.h"
 #import "UnwantedIngredientCollectionViewController.h"
+#import "IngredientSelectionContainerViewController.h"
 
 @interface UnwantedIngredientCollectionViewController ()
 
-@property (nonatomic, strong) IngredientsList *ingredientsList;
 @property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
 @implementation UnwantedIngredientCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"IngredientCell";
 
 - (void)viewDidLoad {
+    NSLog(@"vdl2");
     [super viewDidLoad];
     [self setupCollectionView];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.ingredientsList = [(IngredientSelectionContainerViewController *)self.parentViewController ingredientsList];
+    [self.collectionView reloadData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -38,16 +43,17 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void)setupCollectionView {
-    self.ingredientsList = [[IngredientsList alloc] init];
+//    self.ingredientsList = [[IngredientsList alloc] init];
     
     UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
-    //
-    //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    //    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    //
-    //    [self.collectionView setPagingEnabled:YES];
-    //    [self.collectionView setCollectionViewLayout:flowLayout];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAddedUnwanted) name:@"UnwantedAdded" object:nil];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [flowLayout setSectionInset:UIEdgeInsetsMake(20, 40, 20, 40)];
+    [self.collectionView setCollectionViewLayout:flowLayout];
 }
 
 
@@ -66,10 +72,32 @@ static NSString * const reuseIdentifier = @"Cell";
     IngredientCollectionViewCell *cell = (IngredientCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     Ingredient *ingredient =  self.ingredientsList.unwantedIngredients[indexPath.row];
     cell.ingredientName.text = ingredient.name;
+    //cell.frame = CGRectMake(20, 20, 100, 100);
     return cell;
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(20, 20, 20, 20);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(100, 100);
+}
+
+
 #pragma mark <UICollectionViewDelegate>
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    Ingredient *unwanted = self.ingredientsList.unwantedIngredients[indexPath.row];
+    [self.ingredientsList.unwantedIngredients removeObjectAtIndex:indexPath.row];
+    [self.ingredientsList.allIngredients addObject:unwanted];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedRemoved" object:self];
+    [self.collectionView reloadData];
+
+}
+
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -99,5 +127,11 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+
+#pragma mark NSNotication
+
+- (void)userAddedUnwanted {
+    [self.collectionView reloadData];
+}
 
 @end

@@ -8,7 +8,6 @@
 
 
 #import "Ingredient.h"
-#import "IngredientsList.h"
 #import "IngredientCollectionViewCell.h"
 #import "IngredientListCollectionViewController.h"
 #import "CameraViewController.h"
@@ -16,7 +15,6 @@
 
 @interface IngredientListCollectionViewController ()
 
-@property (nonatomic, strong) IngredientsList *ingredientsList;
 @property (nonatomic, strong) NSArray *dataArray;
 
 @end
@@ -24,10 +22,26 @@
 @implementation IngredientListCollectionViewController
 
 static NSString * const reuseIdentifier = @"IngredientCell";
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+}
 
 - (void)viewDidLoad {
+    NSLog(@"vdl1");
     [super viewDidLoad];
     [self setupCollectionView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.ingredientsList = [(IngredientSelectionContainerViewController *)self.parentViewController ingredientsList];
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,10 +55,11 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 }
 
 -(void)setupCollectionView {
-    self.ingredientsList = [[IngredientsList alloc] init];
-    
+//    self.ingredientsList = [[IngredientsList alloc] init];
     UINib *ingredientCell = [UINib nibWithNibName:@"IngredientCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:ingredientCell forCellWithReuseIdentifier:reuseIdentifier];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRemoveUnwanted) name:@"UnwantedRemoved" object:nil];
 //    
 //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
 //    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -80,13 +95,12 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSMutableArray *list = [[NSMutableArray alloc] initWithArray:self.ingredientsList.allIngredients];
     Ingredient *unwanted = self.ingredientsList.allIngredients[indexPath.row];
-    [list removeObjectAtIndex:indexPath.row];
+    [self.ingredientsList.allIngredients removeObjectAtIndex:indexPath.row];
     [self.ingredientsList.unwantedIngredients addObject:unwanted];
-    [self.ingredientsList saveUnwantedIngredients];
-    self.ingredientsList.allIngredients = list;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedAdded" object:self];
     [self.collectionView reloadData];
+
 }
 
 /*
@@ -117,5 +131,11 @@ static NSString * const reuseIdentifier = @"IngredientCell";
 	
 }
 */
+
+#pragma  mark NSNotification
+
+- (void)userRemoveUnwanted {
+    [self.collectionView reloadData];
+}
 
 @end

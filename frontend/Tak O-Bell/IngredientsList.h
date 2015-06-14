@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Bolts.h>
 
+
+extern NSString * const kWantedIngredientsKey;
 extern NSString * const kUnwantedIngredientsKey;
 
 @interface IngredientsList : NSObject
@@ -16,7 +18,9 @@ extern NSString * const kUnwantedIngredientsKey;
 @property (nonatomic, strong) NSMutableArray *allIngredients;
 @property (nonatomic, strong) NSMutableArray *unwantedIngredients;
 
+- (BFTask *)getAllIngredients;
 - (BFTask *)getUnwatedIngredients;
 - (BFTask *)saveUnwantedIngredients;
+- (BFTask *)saveAllIngredients;
 
 @end
