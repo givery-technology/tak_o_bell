@@ -14,6 +14,7 @@
 		CD45435B1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45435A1B2C2B8500A12DE1 /* UnwantedIngredientCollectionViewController.m */; };
 		D37FC6B31B2D189E0046556D /* RestrictedMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D37FC6B21B2D189E0046556D /* RestrictedMenuView.xib */; };
 		D37FC6B61B2D18F10046556D /* RestrictedMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37FC6B51B2D18F10046556D /* RestrictedMenuViewController.m */; };
+		CD45435E1B2D13A400A12DE1 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD45435D1B2D13A400A12DE1 /* View.xib */; };
 		D38501551B2BF42F003606F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501541B2BF42F003606F9 /* main.m */; };
 		D38501581B2BF42F003606F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38501571B2BF42F003606F9 /* AppDelegate.m */; };
 		D38501601B2BF42F003606F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D385015F1B2BF42F003606F9 /* Images.xcassets */; };
@@ -52,6 +53,7 @@
 		D37FC6B21B2D189E0046556D /* RestrictedMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestrictedMenuView.xib; sourceTree = "<group>"; };
 		D37FC6B41B2D18F10046556D /* RestrictedMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestrictedMenuViewController.h; sourceTree = "<group>"; };
 		D37FC6B51B2D18F10046556D /* RestrictedMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestrictedMenuViewController.m; sourceTree = "<group>"; };
+		CD45435D1B2D13A400A12DE1 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		D385014F1B2BF42F003606F9 /* Tak O-Bell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tak O-Bell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38501531B2BF42F003606F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38501541B2BF42F003606F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				CD45434E1B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib */,
 				D396641C1B2C2685008277FA /* OverlayView.xib */,
 				D37FC6B21B2D189E0046556D /* RestrictedMenuView.xib */,
+				CD45435D1B2D13A400A12DE1 /* View.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				D38501631B2BF42F003606F9 /* LaunchScreen.xib in Resources */,
 				D396641D1B2C2685008277FA /* OverlayView.xib in Resources */,
 				CD4543501B2C06FF00A12DE1 /* IngredientCollectionViewCell.xib in Resources */,
+				CD45435E1B2D13A400A12DE1 /* View.xib in Resources */,
 				D38501601B2BF42F003606F9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
