@@ -102,7 +102,7 @@
 
         
         [self updateCellViewDragState:[self isValidDragPoint:point]];
-        [self updateCellViewDragState:[self isValidRemoveDragPoint:point]];
+        
         cell.hidden = NO;
     } else {
         cell.hidden = YES;
@@ -111,13 +111,8 @@
 
 #pragma mark - Validation helper methods on drag and drop
 - (BOOL)isValidDragPoint:(CGPoint)point {
-    return !CGRectContainsPoint(CGRectMake(0, 0, self.view.frame.size.width, 371), point);
-}
-
-- (BOOL)isValidRemoveDragPoint:(CGPoint)point {
     CGRect rect = self.ingredientListViewController.view.frame;
-    
-    return !CGRectContainsPoint(CGRectMake(0,371, self.view.frame.size.width, 171), point);
+    return !CGRectContainsPoint(rect, point);
 }
 
 - (void)updateCellViewDragState:(BOOL)validDropPoint {
@@ -148,7 +143,7 @@
         cell.hidden = YES;
         
         BOOL validDropPoint = [self isValidDragPoint:touchPoint];
-        BOOL validRemovePoint = [self isValidRemoveDragPoint:touchPoint];
+        BOOL validRemovePoint = ![self isValidDragPoint:touchPoint];
         if (validDropPoint) {
             [self.ingredientListViewController cellDragCompleteWithModel:ingredient withValidDropPoint:validDropPoint];
         }
@@ -156,7 +151,7 @@
 
             [self.unwantedIngredientListViewController cellDragCompleteWithModelForUnwanted:ingredient withValidDropPoint:validRemovePoint];
         }
-        if (validDropPoint && validRemovePoint) {
+        if (validDropPoint) {
             [self.unwantedIngredientListViewController addIngredient:ingredient];
         } else if (validRemovePoint) {
             [self.ingredientListViewController addIngredient:ingredient];
