@@ -9,6 +9,7 @@
 #import "CameraViewController.h"
 #import "TakoAPIClient.h"
 #import "RestrictedMenuViewController.h"
+#import "Ingredient.h"
 
 @interface CameraViewController ()
 
@@ -109,10 +110,16 @@
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     UIImage *resizedImage = [self imageWithImage:image convertToSize:CGSizeMake(image.size.width/3, image.size.height/3)];
     NSLog(@"Image dimensions are %f x %f", resizedImage.size.width, resizedImage.size.height);
-    NSLog(@"Our dietary preferences: %@", self.unwantedIngredientList);
+    if (self.unwantedIngredientList) {
+        for (Ingredient *ingredient in self.unwantedIngredientList) {
+            NSLog(@"Unwanted ingredient: %@", ingredient.name);
+        }
+    } else {
+        self.unwantedIngredientList = [[NSMutableArray alloc] init];
+    }
 //    UIAlertController *uploadingImageController = [UIAlertController alertControllerWithTitle:@"orz" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     
-    [[[TakoAPIClient sharedClient] getRestrictedVersionOfMenu:image dietaryPreferences:@{@"moo":@"moo"}] continueWithBlock:^id(BFTask *task) {
+    [[[TakoAPIClient sharedClient] getRestrictedVersionOfMenu:image dietaryPreferences:@{@"dietary_preferences":self.unwantedIngredientList}] continueWithBlock:^id(BFTask *task) {
 //        [uploadingImageController dismissViewControllerAnimated:YES completion:nil];
         
         if (task.error) {
