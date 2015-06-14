@@ -7,6 +7,8 @@
 //
 
 #import "CameraViewController.h"
+#import "TakoAPIClient.h"
+#import "RestrictedMenuViewController.h"
 
 @interface CameraViewController ()
 
@@ -14,7 +16,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *takePictureButton;
 @property (nonatomic, weak) IBOutlet UIButton *returnToPreferencesButton;
 @property (nonatomic) UIImagePickerController *imagePickerController;
-@property BOOL isExiting;
+@property BOOL showImagePicker;
 
 @end
 
@@ -23,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.isExiting = NO;
+    self.showImagePicker = YES;
     [self.view setBackgroundColor:[UIColor clearColor]];
 //        [self setModalPresentationStyle:UIModalPresentationFullScreen];
     
@@ -76,11 +78,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    if (self.isExiting) { // lol
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } else {
+    if (self.showImagePicker) {
         [self presentViewController:self.imagePickerController animated:YES completion:nil];
     }
+//    if (self.isExiting) { // lol
+////        [self dismissViewControllerAnimated:YES completion:nil];
+//    } else {
+//        [self presentViewController:self.imagePickerController animated:YES completion:nil];
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,30 +93,43 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (IBAction)takePictureButtonPressed:(id)sender {
     [self.imagePickerController takePicture];
 }
 
 - (IBAction)returnToPreferencesButtonPressed:(id)sender {
-//    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    self.isExiting = YES;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    
+    [[[TakoAPIClient sharedClient] getRestrictedVersionOfMenu:image dietaryPreferences:@{@"moo":@"moo"}] continueWithBlock:^id(BFTask *task) {
+        if (task.error) {
+                    NSLog(@"Result is %@", task.error);
+            return nil;
+        }
+                NSLog(@"Result is %@", task.result);
+        UIImage *restrictedMenuImage = task.result;
+        self.showImagePicker = NO;
+        [self dismissViewControllerAnimated:YES completion:^{
+            RestrictedMenuViewController *restrictedMenuViewController = [[RestrictedMenuViewController alloc] initWithNibName:@"RestrictedMenuView" bundle:nil];
+            [self presentViewController:restrictedMenuViewController animated:YES completion:^{
+                restrictedMenuViewController.restrictedMenuImageView.image = restrictedMenuImage;
+            }];
+        }];
+        return nil;
+    }];
+//    self.showImagePicker = NO;
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        RestrictedMenuViewController *restrictedMenuViewController = [[RestrictedMenuViewController alloc] initWithNibName:@"RestrictedMenuView" bundle:nil];
+//        [self presentViewController:restrictedMenuViewController animated:YES completion:^{
+//                restrictedMenuViewController.restrictedMenuImageView.image = image;
+//        }];
+//    }];
 }
 
 @end
