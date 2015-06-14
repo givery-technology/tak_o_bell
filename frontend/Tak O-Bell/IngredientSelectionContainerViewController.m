@@ -23,6 +23,9 @@
 @property (nonatomic, weak) UnwantedIngredientCollectionViewController *unwantedIngredientListViewController;
 @property (weak, nonatomic) IBOutlet UIView *unwantedContainer;
 @property (weak, nonatomic) IBOutlet UIView *unwantedBackground;
+@property (weak, nonatomic) IBOutlet UIView *tempCell;
+@property (weak, nonatomic) IBOutlet UILabel *tempCelName;
+@property (weak, nonatomic) IBOutlet UIImageView *tempCellImage;
 
 @end
 

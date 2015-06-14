@@ -157,6 +157,31 @@
                                     <constraint firstAttribute="trailing" secondItem="8Qa-Lt-0km" secondAttribute="trailing" constant="5" id="nbW-3w-bjE"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vkr-ow-Wso">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPh-94-fid" userLabel="Ingredient Image">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIQ-qI-pEB">
+                                        <rect key="frame" x="2" y="73" width="96" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aPh-94-fid" secondAttribute="trailing" id="DnL-A2-8bF"/>
+                                    <constraint firstAttribute="trailing" secondItem="QIQ-qI-pEB" secondAttribute="trailing" constant="2" id="FMl-JE-bTC"/>
+                                    <constraint firstAttribute="bottom" secondItem="aPh-94-fid" secondAttribute="bottom" id="HHx-CY-jRC"/>
+                                    <constraint firstAttribute="bottom" secondItem="QIQ-qI-pEB" secondAttribute="bottom" constant="10" id="HRZ-6T-8KL"/>
+                                    <constraint firstAttribute="height" constant="100" id="SEw-AM-Aej"/>
+                                    <constraint firstItem="QIQ-qI-pEB" firstAttribute="leading" secondItem="Vkr-ow-Wso" secondAttribute="leading" constant="2" id="gpZ-ud-Xv5"/>
+                                    <constraint firstItem="aPh-94-fid" firstAttribute="leading" secondItem="Vkr-ow-Wso" secondAttribute="leading" id="itT-7A-m7Q"/>
+                                    <constraint firstAttribute="width" constant="100" id="nR9-lC-BDM"/>
+                                    <constraint firstItem="aPh-94-fid" firstAttribute="top" secondItem="Vkr-ow-Wso" secondAttribute="top" id="ruZ-of-ies"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -173,9 +198,11 @@
                             <constraint firstItem="sr7-lY-onZ" firstAttribute="width" secondItem="5f0-Y5-IkF" secondAttribute="width" id="FBN-U1-vpk"/>
                             <constraint firstAttribute="bottom" secondItem="sr7-lY-onZ" secondAttribute="bottom" constant="20" id="Fx8-lX-WnR"/>
                             <constraint firstItem="mQn-Qs-aKJ" firstAttribute="top" secondItem="IEc-pI-SbE" secondAttribute="bottom" id="HQd-dY-pvw"/>
+                            <constraint firstItem="Vkr-ow-Wso" firstAttribute="top" secondItem="qhi-D5-GEe" secondAttribute="top" id="LDI-VX-YM0"/>
                             <constraint firstAttribute="trailing" secondItem="VMX-1V-CBl" secondAttribute="trailing" id="OZq-CP-Q7X"/>
                             <constraint firstAttribute="trailing" secondItem="IEc-pI-SbE" secondAttribute="trailing" id="VMW-F8-T0u"/>
                             <constraint firstAttribute="trailing" secondItem="sr7-lY-onZ" secondAttribute="trailing" constant="20" id="ZGc-U2-cKq"/>
+                            <constraint firstItem="Vkr-ow-Wso" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" id="fI9-ho-SiN"/>
                             <constraint firstItem="sr7-lY-onZ" firstAttribute="leading" secondItem="qhi-D5-GEe" secondAttribute="leading" constant="20" id="fJj-7L-NIc"/>
                             <constraint firstAttribute="trailing" secondItem="5f0-Y5-IkF" secondAttribute="trailing" constant="10" id="igc-rF-QMm"/>
                             <constraint firstItem="sr7-lY-onZ" firstAttribute="centerX" secondItem="5f0-Y5-IkF" secondAttribute="centerX" id="jcM-iQ-pPy"/>
@@ -197,6 +224,9 @@
                     </view>
                     <connections>
                         <outlet property="nextButton" destination="wsw-ly-qMr" id="8V8-wg-coW"/>
+                        <outlet property="tempCelName" destination="QIQ-qI-pEB" id="DmU-wi-8Ap"/>
+                        <outlet property="tempCell" destination="Vkr-ow-Wso" id="0fK-uV-NjU"/>
+                        <outlet property="tempCellImage" destination="aPh-94-fid" id="PVC-aU-LHZ"/>
                         <outlet property="unwantedBackground" destination="5f0-Y5-IkF" id="x9A-sc-JOa"/>
                         <outlet property="unwantedContainer" destination="8Qa-Lt-0km" id="Ekc-yn-LWV"/>
                         <outlet property="unwantedViewContainer" destination="sr7-lY-onZ" id="Q7e-jN-oEk"/>

@@ -102,7 +102,6 @@ static NSString * const reuseIdentifier = @"IngredientCell";
     [self.ingredientsList.allIngredients addObject:unwanted];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UnwantedRemoved" object:self];
     [self.collectionView reloadData];
-
 }
 
 
