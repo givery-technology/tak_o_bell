@@ -119,7 +119,7 @@
     }
 //    UIAlertController *uploadingImageController = [UIAlertController alertControllerWithTitle:@"orz" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     
-    [[[TakoAPIClient sharedClient] getRestrictedVersionOfMenu:image dietaryPreferences:@{@"dietary_preferences":self.unwantedIngredientList}] continueWithBlock:^id(BFTask *task) {
+    [[[TakoAPIClient sharedClient] getRestrictedVersionOfMenu:resizedImage dietaryPreferences:@{@"dietary_preferences":self.unwantedIngredientList}] continueWithBlock:^id(BFTask *task) {
 //        [uploadingImageController dismissViewControllerAnimated:YES completion:nil];
         
         if (task.error) {
