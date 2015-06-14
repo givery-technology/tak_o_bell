@@ -26,13 +26,19 @@ PODS:
   - Bolts/AppLinks (1.2.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.2.0)
+  - GKPopLoadingView (0.0.2):
+    - pop
+  - pop (1.0.7)
 
 DEPENDENCIES:
   - AFNetworking
   - Bolts
+  - GKPopLoadingView
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  GKPopLoadingView: 5890ae4c1809bab129965bf7416a58496244dd68
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
 
 COCOAPODS: 0.37.2

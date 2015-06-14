@@ -10,6 +10,7 @@
 #import "TakoAPIClient.h"
 #import "RestrictedMenuViewController.h"
 #import "Ingredient.h"
+#import "GAPopLoadingViewController.h"
 
 @interface CameraViewController ()
 
@@ -17,6 +18,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *takePictureButton;
 @property (nonatomic, weak) IBOutlet UIButton *returnToPreferencesButton;
 @property (nonatomic) UIImagePickerController *imagePickerController;
+@property (nonatomic, strong) GAPopLoadingViewController *loadingView;
 @property BOOL showImagePicker;
 
 @end
@@ -25,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.loadingView = [[GAPopLoadingViewController alloc] init];
     self.showImagePicker = YES;
     [self.view setBackgroundColor:[UIColor clearColor]];
 //        [self setModalPresentationStyle:UIModalPresentationFullScreen];
@@ -110,18 +112,21 @@
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     UIImage *resizedImage = [self imageWithImage:image convertToSize:CGSizeMake(image.size.width/3, image.size.height/3)];
     NSLog(@"Image dimensions are %f x %f", resizedImage.size.width, resizedImage.size.height);
+    NSMutableArray *dietaryPreferences = [[NSMutableArray alloc] init];
     if (self.unwantedIngredientList) {
         for (Ingredient *ingredient in self.unwantedIngredientList) {
             NSLog(@"Unwanted ingredient: %@", ingredient.name);
+            [dietaryPreferences addObject:ingredient.name];
         }
     } else {
         self.unwantedIngredientList = [[NSMutableArray alloc] init];
     }
 //    UIAlertController *uploadingImageController = [UIAlertController alertControllerWithTitle:@"orz" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     
-    [[[TakoAPIClient sharedClient] getRestrictedVersionOfMenu:resizedImage dietaryPreferences:@{@"dietary_preferences":self.unwantedIngredientList}] continueWithBlock:^id(BFTask *task) {
+    [self.loadingView show:YES withTitle:NSLocalizedString(@"Loading", nil)];
+    [[[TakoAPIClient sharedClient] getRestrictedVersionOfMenu:resizedImage dietaryPreferences:@{@"dietary_preferences":dietaryPreferences}] continueWithBlock:^id(BFTask *task) {
 //        [uploadingImageController dismissViewControllerAnimated:YES completion:nil];
-        
+        [self.loadingView show:NO withTitle:NSLocalizedString(@"Loading", nil)];
         if (task.error) {
             NSLog(@"Result is %@", task.error);
             return nil;

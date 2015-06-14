@@ -66,3 +66,15 @@
 #define COCOAPODS_VERSION_MINOR_Bolts_Tasks 2
 #define COCOAPODS_VERSION_PATCH_Bolts_Tasks 0
 
+// GKPopLoadingView
+#define COCOAPODS_POD_AVAILABLE_GKPopLoadingView
+#define COCOAPODS_VERSION_MAJOR_GKPopLoadingView 0
+#define COCOAPODS_VERSION_MINOR_GKPopLoadingView 0
+#define COCOAPODS_VERSION_PATCH_GKPopLoadingView 2
+
+// pop
+#define COCOAPODS_POD_AVAILABLE_pop
+#define COCOAPODS_VERSION_MAJOR_pop 1
+#define COCOAPODS_VERSION_MINOR_pop 0
+#define COCOAPODS_VERSION_PATCH_pop 7
+

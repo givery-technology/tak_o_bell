@@ -29,7 +29,8 @@
 
 - (BFTask *)getRestrictedVersionOfMenu:(UIImage *)menuImage dietaryPreferences:(NSDictionary *)dietaryPreferences {
     NSData *menuImageData = [NSData dataWithData:UIImageJPEGRepresentation(menuImage, 1.0f)];
-    NSDictionary *parameters = @{@"dislikes": [dietaryPreferences allValues]};
+    NSDictionary *parameters = dietaryPreferences;
+    NSLog(@"Parameters: %@", parameters);
     BFTaskCompletionSource *t = [BFTaskCompletionSource taskCompletionSource];
     [self POST:@"/test" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:menuImageData name:@"image" fileName:@"image.jpg" mimeType:@"image/jpeg"];
