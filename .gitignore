@@ -12,3 +12,4 @@ backend/cabal.sandbox.config
 backend/bin/*
 backend/build/*
 backend/dist/*
+backend/tmp/*

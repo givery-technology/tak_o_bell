@@ -19,8 +19,8 @@ namespace
     const std::string usage = "Usage : tutorial_HoughCircle_Demo <path_to_input_image>\n";
 
     // initial and max values of the parameters of interests.
-    const int cannyThresholdInitialValue = 40;
-    const int accumulatorThresholdInitialValue = 40;
+    const int cannyThresholdInitialValue = 160;
+    const int accumulatorThresholdInitialValue = 30;
     const int maxAccumulatorThreshold = 200;
     const int maxCannyThreshold = 255;
 

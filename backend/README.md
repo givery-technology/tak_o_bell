@@ -4,6 +4,8 @@
 make
 ```
 
+Put your output file `out` in some directory in your `$PATH`.
+
 ## Usage
 
 
@@ -20,7 +22,11 @@ For example:
 ./out sample/sample1.jpg 100 30 | runghc src/image.hs ./out.jpg
 ```
 
+curl 121.94.171.205
+curl -F "image=@/home/me/local/src/spajam/tak_o_bell/backend/sample/sample0.jpg" 121.94.171.205/test
+
 ## Requirements
+
 
 I don't know.
 You may need `ghc`.
